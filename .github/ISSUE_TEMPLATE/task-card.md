@@ -31,8 +31,8 @@ Task Card 하나의 estimated time / consumed time 이 최대 3h 이 넘어가�
 
 ##### Labelling
 
-- estimated time :  `E:2h` 
-- consumed time :  `C:1h`  
+- estimated time :  `E: 2h` 
+- consumed time :  `C: 1h`  
 - page : `Mypage`, `Index` ...
 - position : `Client`, `Server` 
 - sprint : `Sprint`
