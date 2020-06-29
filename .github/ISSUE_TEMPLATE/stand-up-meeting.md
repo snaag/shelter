@@ -2,7 +2,7 @@
 name: Stand up Meeting
 about: '스탠드업 미팅시 사용되는 template 입니다. '
 title: "[Stand up] 2020.00.00"
-labels: Stand up
+labels: ''
 assignees: ''
 
 ---
