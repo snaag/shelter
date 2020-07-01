@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const shelterRouter = require("./routes/shelters");
+const userRouter = require("./routes/user");
 
 const app = express();
 const port = 4000;
@@ -15,6 +17,9 @@ app.use(
     credentials: true,
   })
 );
+
+app.use("/shelter", shelterRouter);
+app.use("/user", userRouter);
 
 app.set("port", port);
 app.listen(app.get("port"), () => {
