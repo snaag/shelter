@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Shelter from "./Shelter";
+import "../../styles/Map.css";
 
 class Map extends Component {
   render() {
     return (
-      <div>
+      <div className="map">
         <Shelter />
       </div>
     );
