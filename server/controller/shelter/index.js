@@ -1,11 +1,62 @@
 const axios = require("axios");
 const { shelters } = require("../../models");
 const apiKey = require("../../config/config.js").apiKey;
+const url = require("url");
 
 module.exports = {
   shelterController: {
-    getAll: () => console.log("hi"),
-    getInfo: () => console.log("bye"),
+    getList: async (req, res) => {
+      // 없으면 전체 반환
+      try {
+        let queryLength = Object.keys(req.query).length; //query parameter 길이
+        if (queryLength === 0) {
+          //parameter가 없는 경우
+          let data = await shelters.findAll();
+          res.status(200).json({ shelters: data });
+        } else {
+          // 조건이 있으면 조건을 토대로 검사
+          let queryData = url.parse(req.url, true).query; //url.parse를 통해 url을 객체화! true=객체화 / false=문자열
+
+          let obj = {
+            SIGUN_CD: queryData.SIGUN_CD,
+            SEX_TYPE: queryData.SEX_TYPE,
+            BYPERD_TYPE: queryData.BYPERD_TYPE,
+          };
+          let option = {}; //where문의 조건으로 들어갈 객체
+
+          //option에 값을 넣을 함수
+          function filter(queryKey) {
+            if (obj[queryKey] !== undefined) {
+              if (queryKey === "SEX_TYPE") {
+                option[queryKey] = [obj[queryKey], "ALL"];
+              } else {
+                option[queryKey] = obj[queryKey];
+              }
+            }
+          }
+          //option에 값 넣는 작업
+          for (let e in obj) {
+            filter(e);
+          }
+
+          let data = await shelters.findAll({ where: option });
+
+          if (data.length === 0) {
+            res.status(404).send("데이터가 없습니다.");
+          } else {
+            res.status(200).json({ shelters: data });
+          }
+        }
+      } catch (e) {
+        console.log(e);
+        res.status(500).send(e.name);
+      }
+    },
+    getInfo: async (req, res) => {
+      var queryData = url.parse(req.url, true).query.id;
+      let data = shelters.findOne({ where: { id: queryData } });
+      res.status(200).json(data);
+    },
   },
 };
 
@@ -85,4 +136,4 @@ const getShelters = async () => {
     console.error(e);
   }
 };
-getShelters();
+// getShelters();
