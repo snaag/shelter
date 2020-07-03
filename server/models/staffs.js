@@ -1,16 +1,10 @@
 "use strict";
 const { Model } = require("sequelize");
+const crypto = require("crypto");
+
 module.exports = (sequelize, DataTypes) => {
-  class staffs extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
+  class staffs extends Model {}
+
   staffs.init(
     {
       email: DataTypes.STRING,
@@ -20,7 +14,18 @@ module.exports = (sequelize, DataTypes) => {
       shelterId: DataTypes.INTEGER,
     },
     {
+
+      hooks: {
+        beforeCreate: (staffs, options) => {
+          staffs.password = crypto
+            .createHmac("sha256", "shelteretlehs")
+            .update(staffs.password)
+            .digest("hex");
+        },
+      },
       sequelize,
+    },
+    {
       modelName: "staffs",
     }
   );
