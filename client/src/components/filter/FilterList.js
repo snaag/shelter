@@ -6,8 +6,11 @@ class FilterList extends Component {
   render() {
     return (
       <div>
+        FilterList
         <FilterKeyword />
-        <FilterItem />
+        {this.props.shelters.map((shelter, i) => (
+          <FilterItem key={i} shelter={shelter} />
+        ))}
       </div>
     );
   }
