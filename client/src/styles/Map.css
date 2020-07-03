@@ -1,4 +1,21 @@
 .map {
   width: 75%;
-  background-color: steelblue;
+}
+
+.shelter-marker__window__contents__type {
+  display: flex;
+  padding-bottom: 0.1rem;
+}
+
+.shelter-marker__window__contents__sex-type {
+  background: darkred;
+  margin: 0.1rem;
+  padding: 0.1rem;
+  margin-left: auto;
+}
+
+.shelter-marker__window__contents__byperd-type {
+  background: gray;
+  margin: 0.1rem;
+  padding: 0.1rem;
 }
