@@ -9,7 +9,7 @@ import {
 } from "../actions/index";
 
 const initialState = {
-  menusActive: true,
+  menusActive: false,
   // 나중에 filter 부분이랑 연결해서
   // 검색 버튼 눌렀을 때 버튼 활성화되도록 함
   mapButtonActive: true,

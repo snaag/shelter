@@ -12,8 +12,8 @@ class FilterCondition extends Component {
       conditions: {
         SEX_TYPE: [],
         BYPERD_TYPE: [],
-        SIGUN_CD: [],
-      },
+        SIGUN_CD: []
+      }
     };
 
     this.foldToggle = this.foldToggle.bind(this);
@@ -27,7 +27,7 @@ class FilterCondition extends Component {
 
   foldToggle() {
     this.setState({
-      fold: !this.state.fold,
+      fold: !this.state.fold
     });
   }
 
@@ -48,7 +48,7 @@ class FilterCondition extends Component {
       newState.conditions = {
         SEX_TYPE: this.state.conditions.SEX_TYPE,
         BYPERD_TYPE: this.state.conditions.BYPERD_TYPE,
-        SIGUN_CD: this.state.conditions.SIGUN_CD,
+        SIGUN_CD: this.state.conditions.SIGUN_CD
       };
       newState.conditions[condition] = conditions;
       this.setState(newState);
@@ -58,9 +58,10 @@ class FilterCondition extends Component {
 
   handleButtonClick() {
     this.setState({
-      fold: true,
+      fold: true
     });
     this.props.getAndDispatchShelters(this.state.conditions);
+    this.props.changeButtonsStatus(true);
   }
 
   render() {

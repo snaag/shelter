@@ -14,9 +14,9 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: [`*`],
+    origin: "*",
     methods: ["GET", "POST"],
-    credentials: true,
+    credentials: true
   })
 );
 

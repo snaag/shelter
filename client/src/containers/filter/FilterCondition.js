@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 import axios from "axios";
-import { setFilteredShelters, setFilterConditions } from "../../actions/index";
+import {
+  setFilteredShelters,
+  setFilterConditions,
+  changeButtonsStatus
+} from "../../actions/index";
 import FilterCondition from "../../components/filter/FilterCondition";
 
 const mapStateToProps = () => ({});
@@ -28,6 +32,7 @@ const mapDispatchToProps = dispatch => {
     dispatchConditions: conditions => {
       return dispatch(setFilterConditions(conditions));
     },
+    changeButtonsStatus: status => dispatch(changeButtonsStatus(status))
   };
 };
 

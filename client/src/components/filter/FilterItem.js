@@ -34,7 +34,7 @@ class FilterItem extends Component {
     } else if (shelter.SEX_TYPE == "ALL") {
       sexType = [
         <img src={icon.male} alt="" />,
-        <img src={icon.female} alt="" />,
+        <img src={icon.female} alt="" />
       ];
     }
 
