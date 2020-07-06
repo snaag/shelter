@@ -2,6 +2,18 @@
   width: 75%;
 }
 
+.map__need-conditions {
+  display: table;
+  height: 90vh;
+  width: 100%;
+}
+
+.map__need-conditions > span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 2rem;
+}
+
 .shelter-marker__window__contents__type {
   display: flex;
   padding-bottom: 0.1rem;

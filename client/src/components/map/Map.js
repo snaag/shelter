@@ -16,27 +16,66 @@ const centerOfLocations = locations => {
   return { lat: sum.lat / length, lng: sum.lng / length };
 };
 
+const getLocations = shelters => {
+  const ret = [];
+
+  shelters.forEach(shelter => {
+    ret.push({
+      lat: Number(shelter.REFINE_WGS84_LAT),
+      lng: Number(shelter.REFINE_WGS84_LOGT)
+    });
+  });
+
+  return ret;
+};
+
+const getDetails = shelters => {
+  const ret = [];
+
+  shelters.forEach(shelter => {
+    ret.push({
+      sexType: shelter.SEX_TYPE,
+      restAreaName: shelter.RESTARER_NM,
+      byperedType: shelter.BYPERD_TYPE
+    });
+  });
+
+  return ret;
+};
+
 const Map = props => {
+  const positions = getLocations(props.shelters);
+  const details = getDetails(props.shelters);
+
   const MapWithAMarker = withScriptjs(
     withGoogleMap(props => (
       <GoogleMap defaultZoom={13} defaultCenter={props.defaultCenter}>
-        {props.positions.map((position, idx) => (
-          <ShelterDetail position={position} details={props.details[idx]} />
-        ))}
+        {props.positions &&
+          props.positions.map((position, idx) => (
+            <ShelterDetail position={position} details={props.details[idx]} />
+          ))}
       </GoogleMap>
     ))
   );
+
   return (
     <div className="map">
-      <MapWithAMarker
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${googleMap}&v=3.exp&libraries=geometry,drawing,places`}
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-        positions={props.shelterLocations}
-        details={props.details}
-        defaultCenter={centerOfLocations(props.shelterLocations)}
-      />
+      {props.shelters.length > 0 && (
+        <MapWithAMarker
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${googleMap}&v=3.exp&libraries=geometry,drawing,places`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `90vh` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          positions={positions}
+          details={details}
+          defaultCenter={centerOfLocations(positions)}
+        />
+      )}
+      {props.shelters.length === 0 && (
+        <div className="map__need-conditions">
+          <span>성별과 기간, 지역을 고른 후 검색해주세요</span>
+        </div>
+      )}
     </div>
   );
 };
