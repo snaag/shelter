@@ -36,7 +36,8 @@ const getDetails = shelters => {
     ret.push({
       sexType: shelter.SEX_TYPE,
       restAreaName: shelter.RESTARER_NM,
-      byperedType: shelter.BYPERD_TYPE
+      byperedType: shelter.BYPERD_TYPE,
+      location: shelter.REFINE_LOTNO_ADDR
     });
   });
 
@@ -49,7 +50,13 @@ const Map = props => {
 
   const MapWithAMarker = withScriptjs(
     withGoogleMap(props => (
-      <GoogleMap defaultZoom={13} defaultCenter={props.defaultCenter}>
+      <GoogleMap
+        defaultZoom={13}
+        defaultCenter={props.defaultCenter}
+        defaultOptions={{
+          disableDefaultUI: true
+        }}
+      >
         {props.positions &&
           props.positions.map((position, idx) => (
             <ShelterDetail position={position} details={props.details[idx]} />

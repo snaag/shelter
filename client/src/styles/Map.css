@@ -20,14 +20,50 @@
 }
 
 .shelter-marker__window__contents__sex-type {
-  background: darkred;
   margin: 0.1rem;
   padding: 0.1rem;
   margin-left: auto;
 }
+.shelter-marker__window__contents__sex-type__female {
+  height: 15px;
+  width: 15px;
+  background-color: rgb(182, 45, 45);
+  border-radius: 20%;
+  display: inline-block;
+  margin-left: 0.3rem;
+}
+
+.shelter-marker__window__contents__sex-type__male {
+  height: 15px;
+  width: 15px;
+  background-color: rgb(34, 37, 192);
+  border-radius: 20%;
+  display: inline-block;
+}
 
 .shelter-marker__window__contents__byperd-type {
-  background: gray;
   margin: 0.1rem;
   padding: 0.1rem;
+}
+
+/* Ⅰ Ⅱ Ⅲ  */
+.shelter-marker__window__contents__byperd-type__awhile::after {
+  border: solid rgb(182, 45, 45) 1px;
+  border-radius: 20%;
+  padding: 0 0.35rem;
+  content: "I";
+}
+
+.shelter-marker__window__contents__byperd-type__short::after {
+  border: solid rgb(182, 45, 45) 1px;
+  border-radius: 20%;
+  padding: 0 0.1rem;
+  content: "Ⅱ";
+}
+
+.shelter-marker__window__contents__byperd-type__mid-and-long::after {
+  border: solid rgb(182, 45, 45) 1px;
+  border-radius: 20%;
+  padding: 0 0.1rem;
+  content: "Ⅲ";
 }

@@ -14,8 +14,8 @@ const mapDispatchToProps = dispatch => {
           params: {
             key: "ba44afec8b374581bf2df0cb0c577cf0",
             Type: "json",
-            SIGUN_NM: "수원시",
-          },
+            SIGUN_NM: "성남시"
+          }
         }
       );
       let shelters = response.data.YoungBoyAndGirsRestArea[1].row;
@@ -23,8 +23,11 @@ const mapDispatchToProps = dispatch => {
     },
     dispatchConditions: conditions => {
       return dispatch(setFilterConditions(conditions));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterCondition);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FilterCondition);
