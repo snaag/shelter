@@ -16,4 +16,7 @@ module.exports = {
   apiKey: {
     gov: process.env.API_KEY_GOV,
   },
+  secret: {
+    shelter: process.env.SVS,
+  },
 };

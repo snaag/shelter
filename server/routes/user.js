@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { jwtVerify } = require("../utils/jwtVerify.js");
 
 const userController = require("../controller/user");
 
@@ -6,7 +7,7 @@ const userController = require("../controller/user");
 router.post("/signup", userController.signup);
 
 // * POST /user/signin
-router.post("/signin", userController.signin);
+router.post("/signin", jwtVerify, userController.signin);
 
 // * POST /user/signout
 router.post("/signout", userController.signout);
