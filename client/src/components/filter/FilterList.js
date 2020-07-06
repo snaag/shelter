@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../../styles/filter/FilterList.css";
 import FilterItem from "../../containers/filter/FilterItem";
 
 class FilterList extends Component {

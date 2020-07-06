@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { setFilteredShelters, setFilterConditions } from "../../actions/index";
 import FilterCondition from "../../components/filter/FilterCondition";
-import { SHELTER_API_KEY } from "../../config/apiKey";
 
 const mapStateToProps = () => ({});
 
@@ -15,17 +14,21 @@ const mapDispatchToProps = dispatch => {
           params += `${field}=${value}&`;
         }
       }
-      let response = await axios.get("http://localhost:4000/shelter" + params);
-      let shelters = response.data.shelters;
-      return dispatch(setFilteredShelters(shelters));
+      axios
+        .get("http://localhost:4000/shelter" + params)
+        .then(({ data }) => {
+          return dispatch(setFilteredShelters(data.shelters));
+        })
+        .catch(({ response }) => {
+          if (response.status === 404) {
+            return dispatch(setFilteredShelters([]));
+          }
+        });
     },
     dispatchConditions: conditions => {
       return dispatch(setFilterConditions(conditions));
-    }
+    },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FilterCondition);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterCondition);

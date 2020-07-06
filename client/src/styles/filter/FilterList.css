@@ -1,3 +1,9 @@
+/* FilterList */
+.filter-list {
+  overflow-y: auto;
+  height: 87vh;
+}
+
 /* FilterItem */
 .filter-list__item {
   border-bottom: solid 1px #e8f1f5;
@@ -63,4 +69,9 @@
   padding: 0 2px;
   top: 10%;
   left: 10px;
+}
+
+/* FilterItemDetail */
+.filter-item-detail {
+  border-bottom: solid 1px #e8f1f5;
 }

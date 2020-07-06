@@ -10,7 +10,6 @@ class Filter extends Component {
       <div className="filter">
         <FilterCondition />
         <FilterList />
-        <FilterItemDetail />
       </div>
     );
   }
