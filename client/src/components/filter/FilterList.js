@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import FilterKeyword from "./FilterKeyword";
-import FilterItem from "./FilterItem";
+import FilterItem from "../../containers/filter/FilterItem";
 
 class FilterList extends Component {
   render() {
     return (
-      <div>
-        FilterList
-        <FilterKeyword />
+      <div className="filter-list">
         {this.props.shelters.map((shelter, i) => (
           <FilterItem key={i} shelter={shelter} />
         ))}

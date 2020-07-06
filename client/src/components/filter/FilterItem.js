@@ -4,14 +4,13 @@ class FilterItem extends Component {
   render() {
     let shelter = this.props.shelter;
     return (
-      <div>
-        <div>{shelter.OPERT_INST_NM}</div>
-        <div>{shelter.CONTCT_NO}</div>
-        <div>{shelter.REFINE_ROADNM_ADDR}</div>
-        <div>거리</div>
-        <div>전화 아이콘</div>
-        <div>{shelter.SEX_TYPE}</div>
-        <div>{shelter.BYPERD_TYPE}</div>
+      <div className="filter-list--item" onClick={this.props.onItemClick}>
+        <div className="filter-list--item--name">{shelter.RESTARER_NM}</div>
+        <div className="filter-list--item--tel">
+          <a href={`tel:${shelter.CONTCT_NO}`}>{shelter.CONTCT_NO}</a>
+        </div>
+        <div className="filter-list--item--sex-type">{shelter.SEX_TYPE}</div>
+        <div className="filter-list--item--period">{shelter.BYPERD_TYPE}</div>
       </div>
     );
   }

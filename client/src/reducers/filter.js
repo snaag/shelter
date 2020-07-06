@@ -1,11 +1,15 @@
-import { SET_FILTER_CONDITIONS, SET_FILTERED_SHELTERS } from "../actions/index";
+import {
+  SET_FILTER_CONDITIONS,
+  SET_FILTERED_SHELTERS,
+  SET_CURRENT_SHELTER,
+} from "../actions/index";
 
 const initialState = {
   shelters: [],
   conditions: {
-    sexTypes: [],
-    periods: [],
-    cities: [],
+    SEX_TYPE: [],
+    BYPERD_TYPE: [],
+    SIGUN_CD: [],
   },
 };
 
@@ -19,6 +23,11 @@ const filterReducer = (state = initialState, action) => {
     case SET_FILTERED_SHELTERS:
       return Object.assign({}, state, {
         shelters: action.shelters,
+      });
+
+    case SET_CURRENT_SHELTER:
+      return Object.assign({}, state, {
+        currentShelter: action.shelter,
       });
 
     default:

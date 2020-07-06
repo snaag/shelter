@@ -7,16 +7,18 @@ class FilterCondition extends Component {
     this.state = {
       fold: false,
       conditions: {
-        sexTypes: [],
-        periods: [],
-        cities: [],
+        SEX_TYPE: [],
+        BYPERD_TYPE: [],
+        SIGUN_CD: [],
       },
     };
 
     this.foldToggle = this.foldToggle.bind(this);
-    this.handleClickSexType = this.handleClickCondition("sexTypes").bind(this);
-    this.handleClickPeriods = this.handleClickCondition("periods").bind(this);
-    this.handleClickCities = this.handleClickCondition("cities").bind(this);
+    this.handleClickSexType = this.handleClickCondition("SEX_TYPE").bind(this);
+    this.handleClickPeriods = this.handleClickCondition("BYPERD_TYPE").bind(
+      this
+    );
+    this.handleClickCities = this.handleClickCondition("SIGUN_CD").bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
@@ -41,27 +43,32 @@ class FilterCondition extends Component {
       }
       let newState = {};
       newState.conditions = {
-        sexTypes: this.state.conditions.sexTypes,
-        periods: this.state.conditions.periods,
-        cities: this.state.conditions.cities,
+        SEX_TYPE: this.state.conditions.SEX_TYPE,
+        BYPERD_TYPE: this.state.conditions.BYPERD_TYPE,
+        SIGUN_CD: this.state.conditions.SIGUN_CD,
       };
       newState.conditions[condition] = conditions;
       this.setState(newState);
     };
   }
 
-  async handleButtonClick() {
+  handleButtonClick() {
     this.setState({
       fold: true,
     });
-    this.props.getAndDispatchShelters();
+    this.props.getAndDispatchShelters(this.state.conditions);
     this.props.dispatchConditions(this.state.conditions);
   }
 
   render() {
     return (
       <div className="filter-condition">
-        <div onClick={this.foldToggle}>검색 필터</div>
+        <div
+          className="filter-condition--fold-button"
+          onClick={this.foldToggle}
+        >
+          <span>검색 필터</span>
+        </div>
         <div
           className={`filter-condition--${this.state.fold ? "fold" : "unfold"}`}
         >
@@ -72,7 +79,6 @@ class FilterCondition extends Component {
             <div className="filter-condition__sex__type">
               <div
                 className="filter-condition__sex__type--male"
-                value="male"
                 title="M"
                 onClick={this.handleClickSexType}
               >
@@ -80,7 +86,6 @@ class FilterCondition extends Component {
               </div>
               <div
                 className="filter-condition__sex__type--female"
-                value="female"
                 title="F"
                 onClick={this.handleClickSexType}
               >
@@ -107,7 +112,7 @@ class FilterCondition extends Component {
               단기
             </div>
             <div
-              classNmae="filter-condition__period__type--mid-long"
+              className="filter-condition__period__type--mid-long"
               title="중장기"
               onClick={this.handleClickPeriods}
             >

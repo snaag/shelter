@@ -3,6 +3,7 @@ import { createAction } from "redux-actions";
 // Filter
 const SET_FILTER_CONDITIONS = "SET_FILTER_CONDITIONS";
 const SET_FILTERED_SHELTERS = "SET_FILTERED_SHELTERS";
+const SET_CURRENT_SHELTER = "SET_CURRENT_SHELTER";
 
 const setFilterConditions = conditions => ({
   type: SET_FILTER_CONDITIONS,
@@ -12,6 +13,12 @@ const setFilterConditions = conditions => ({
 const setFilteredShelters = shelters => ({
   type: SET_FILTERED_SHELTERS,
   shelters
+});
+
+
+const setCurrentShelter = shelter => ({
+  type: SET_CURRENT_SHELTER,
+  shelter,
 });
 
 // FAB
@@ -50,8 +57,10 @@ export {
   // Filter
   SET_FILTER_CONDITIONS,
   SET_FILTERED_SHELTERS,
+  SET_CURRENT_SHELTER,
   setFilteredShelters,
   setFilterConditions,
+  setCurrentShelter,
   // FAB
   //...action type
   CHANGE_BUTTONS_STATUS,
