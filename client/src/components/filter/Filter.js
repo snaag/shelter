@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import FilterCondition from "../../containers/filter/FilterCondition";
 import FilterList from "../../containers/filter/FilterList";
 import FilterItemDetail from "../../containers/filter/FilterItemDetail";
-import "../../styles/Filter.css";
+import "../../styles/filter/Filter.css";
 
 class Filter extends Component {
   render() {

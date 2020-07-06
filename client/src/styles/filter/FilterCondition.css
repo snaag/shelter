@@ -1,0 +1,91 @@
+/* filter-condition */
+.filter-condition--fold {
+  display: none;
+}
+
+.filter-condition--unfold {
+  display: block;
+}
+
+/* 검색 버튼 */
+.filter-condition__fold-button {
+  background-color: #e8f1f5;
+  padding: 5px;
+  height: 20;
+  overflow: auto;
+}
+
+.filter-condition__fold-button > img {
+  width: 15px;
+  padding: 6px;
+  float: right;
+}
+
+.filter-condition__filter-button {
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  background-color: #004a7c;
+  color: #fffdf9;
+  width: 80px;
+  height: 35px;
+  border: none;
+}
+
+.filter-condition__filter-button:hover {
+  background-color: #005691;
+}
+
+/* 성별 */
+.filter-condition__sex--type,
+.filter-condition__sex__type--male,
+.filter-condition__sex__type--female {
+  display: inline-block;
+}
+
+.filter-condition__sex .filter-condition__sex__type--male,
+.filter-condition__sex__type--female {
+  margin: 5px;
+}
+
+.filter-condition__sex__type--male > img,
+.filter-condition__sex__type--female > img {
+  border: solid 2px #005691;
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+}
+
+/* 기간 */
+.filter-condition__period {
+  border-top: solid 2px #e8f1f5;
+  padding: 5px 2px;
+}
+
+.filter-condition__period--type,
+.filter-condition__period__type--daily,
+.filter-condition__period__type--short,
+.filter-condition__period__type--mid-long {
+  display: inline-block;
+}
+
+/* 지역 */
+.filter-condition__city {
+  border-top: solid 2px #e8f1f5;
+  padding: 5px 2px;
+}
+
+.filter-condition__city__list,
+.filter-condition__city__list__element {
+  display: inline-block;
+}
+
+.filter-condition__period__type--daily,
+.filter-condition__period__type--short,
+.filter-condition__period__type--mid-long,
+.filter-condition__city__list__element {
+  border: solid 2px #005691;
+  border-radius: 5em;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+  margin: 5px 10px;
+  width: 70px;
+}

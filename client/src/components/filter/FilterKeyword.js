@@ -1,8 +1,27 @@
 import React, { Component } from "react";
+import "../../styles/filter/FilterKeyword.css";
+import { cities, cityCodes } from "../../data/city";
 
 class FilterKeyword extends Component {
   render() {
-    return <div>FilterKeyword</div>;
+    let conditions = this.props.conditions;
+    return (
+      <div className="filter-keyword">
+        {conditions.SEX_TYPE.map(condition => (
+          <div className="filter-keyword__sex">
+            {condition === "M" ? "남자" : "여자"}
+          </div>
+        ))}
+        {conditions.BYPERD_TYPE.map(condition => (
+          <div className="filter-keyword__period">{condition}</div>
+        ))}
+        {conditions.SIGUN_CD.map(condition => (
+          <div className="filter-keyword__cities">
+            {cities[cityCodes.indexOf(condition)]}
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 

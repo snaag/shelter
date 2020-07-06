@@ -1,0 +1,66 @@
+/* FilterItem */
+.filter-list__item {
+  border-bottom: solid 1px #e8f1f5;
+  padding: 10px;
+  height: 50px;
+  position: relative;
+}
+
+.filter-list__item:hover {
+  background-color: #e8f1f5;
+}
+
+.filter-list__item div {
+  display: inline-block;
+  position: absolute;
+}
+
+/* 기관명 */
+.filter-list__item__name {
+  font-weight: bold;
+  margin: 5px;
+  left: 10px;
+  top: 25%;
+}
+
+/* 연락처 */
+.filter-list__item__tel {
+  top: 25%;
+  right: 10px;
+}
+
+.filter-list__item__tel a img {
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: 100%;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+  margin: 3px;
+  padding: 1px;
+}
+
+/* 성별 */
+.filter-list__item__sex-type {
+  top: 29%;
+  right: 45px;
+}
+
+.filter-list__item__sex-type img {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 100%;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+  margin: 3px;
+  padding: 1px;
+}
+
+/* 기간 */
+.filter-list__item__period {
+  margin: 0 5px;
+  background-color: #005691;
+  color: #fafafa;
+  font-size: 0.75em;
+  border-radius: 0.25em;
+  padding: 0 2px;
+  top: 10%;
+  left: 10px;
+}

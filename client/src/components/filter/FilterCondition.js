@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import FilterKeyword from "../../containers/filter/FilterKeyword";
+import "../../styles/filter/FilterCondition.css";
 import { cities, cityCodes } from "../../data/city";
+import icon from "../../assets/icon";
 
 class FilterCondition extends Component {
   constructor(props) {
@@ -38,7 +41,7 @@ class FilterCondition extends Component {
         conditions.splice(idx, 1);
         target.style = "background-color: ''";
       } else {
-        target.style = "background-color: lightgreen";
+        target.style = "background-color: #005691;color: #fafafa";
         conditions.push(target.title);
       }
       let newState = {};
@@ -49,6 +52,7 @@ class FilterCondition extends Component {
       };
       newState.conditions[condition] = conditions;
       this.setState(newState);
+      this.props.dispatchConditions(newState.conditions);
     };
   }
 
@@ -57,45 +61,48 @@ class FilterCondition extends Component {
       fold: true,
     });
     this.props.getAndDispatchShelters(this.state.conditions);
-    this.props.dispatchConditions(this.state.conditions);
   }
 
   render() {
     return (
       <div className="filter-condition">
-        <div
-          className="filter-condition--fold-button"
-          onClick={this.foldToggle}
-        >
-          <span>검색 필터</span>
+        <div className="filter-condition__fold-button">
+          <FilterKeyword />
+          {this.state.fold ? (
+            <img src={icon.doubleUpArrow} alt="" onClick={this.foldToggle} />
+          ) : (
+            <img src={icon.doubleDownArrow} alt="" onClick={this.foldToggle} />
+          )}
         </div>
         <div
           className={`filter-condition--${this.state.fold ? "fold" : "unfold"}`}
         >
           <div className="filter-condition__sex">
             <div className="filter-condition__sex__title">
-              <span>[성별]</span>
+              <span>성별</span>
             </div>
             <div className="filter-condition__sex__type">
-              <div
-                className="filter-condition__sex__type--male"
-                title="M"
-                onClick={this.handleClickSexType}
-              >
-                <img />
+              <div className="filter-condition__sex__type--male">
+                <img
+                  src={icon.male}
+                  title="M"
+                  alt="남성"
+                  onClick={this.handleClickSexType}
+                />
               </div>
-              <div
-                className="filter-condition__sex__type--female"
-                title="F"
-                onClick={this.handleClickSexType}
-              >
-                <img />
+              <div className="filter-condition__sex__type--female">
+                <img
+                  src={icon.female}
+                  title="F"
+                  alt="여성"
+                  onClick={this.handleClickSexType}
+                />
               </div>
             </div>
           </div>
           <div className="filter-condition__period">
             <div className="filter-condition__period__title">
-              <span>[기간]</span>
+              <span>기간</span>
             </div>
             <div
               className="filter-condition__period__type--daily"
@@ -121,7 +128,7 @@ class FilterCondition extends Component {
           </div>
           <div className="filter-condition__city">
             <div className="filter-condition__city__title">
-              <span>[지역]</span>
+              <span>지역</span>
             </div>
             <div className="filter-condition__city__list">
               {cities.map((city, i) => (

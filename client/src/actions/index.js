@@ -15,7 +15,6 @@ const setFilteredShelters = shelters => ({
   shelters
 });
 
-
 const setCurrentShelter = shelter => ({
   type: SET_CURRENT_SHELTER,
   shelter,
@@ -52,6 +51,7 @@ const changeCommentButtonStatus = createAction(
   CHANGE_COMMENT_BUTTON_STATUS,
   status => status
 );
+
 
 export {
   // Filter
