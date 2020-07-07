@@ -3,72 +3,84 @@
   overflow-y: auto;
   height: 87vh;
 }
-
-/* FilterItem */
 .filter-list__item {
-  border-bottom: solid 1px #e8f1f5;
-  padding: 10px;
-  height: 50px;
-  position: relative;
+  border-bottom: 0.01rem rgba(90, 90, 90, 0.2) solid;
 }
-
-.filter-list__item:hover {
-  background-color: #e8f1f5;
+.filter-list__item__about {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 }
-
-.filter-list__item div {
-  display: inline-block;
-  position: absolute;
-}
-
-/* 기관명 */
-.filter-list__item__name {
-  font-weight: bold;
-  margin: 5px;
-  left: 10px;
-  top: 25%;
-}
-
-/* 연락처 */
-.filter-list__item__tel {
-  top: 25%;
-  right: 10px;
-}
-
-.filter-list__item__tel a img {
-  width: 1.75em;
-  height: 1.75em;
-  border-radius: 100%;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
-  margin: 3px;
-  padding: 1px;
-}
-
-/* 성별 */
-.filter-list__item__sex-type {
-  top: 29%;
-  right: 45px;
-}
-
-.filter-list__item__sex-type img {
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: 100%;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
-  margin: 3px;
-  padding: 1px;
+.filter-list__item__about__type {
+  display: flex;
 }
 
 /* 기간 */
-.filter-list__item__period {
-  margin: 0 5px;
-  background-color: #005691;
-  color: #fafafa;
-  font-size: 0.75em;
-  border-radius: 0.25em;
-  padding: 0 2px;
-  top: 10%;
-  left: 10px;
+.filter-list__item__about__type__period--awhile::after {
+  color: rgb(90, 90, 90);
+  border: 0.01px solid rgb(90, 90, 90);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.8em;
+  margin: 0 0.1rem;
+  content: "일시";
+}
+
+.filter-list__item__about__type__period--short::after {
+  color: rgb(90, 90, 90);
+  border: 0.01px solid rgb(90, 90, 90);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.8em;
+  margin: 0 0.2rem;
+  content: "단기";
+}
+
+.filter-list__item__about__type__period--mid-and-long::after {
+  color: rgb(90, 90, 90);
+  border: 0.01px solid rgb(90, 90, 90);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.8em;
+  margin: 0 0.2rem;
+  content: "중장기";
+}
+
+/* 성별 */
+.filter-list__item__about__type__sex__male::after {
+  color: white;
+  background-color: rgb(34, 37, 192);
+  border: 0.01px solid rgb(34, 37, 192);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  content: "남";
+  font-size: 0.8em;
+  margin: 0 0.1rem;
+}
+
+.filter-list__item__about__type__sex__female::after {
+  color: white;
+  background-color: rgb(182, 45, 45);
+  border: 0.01px solid rgb(182, 45, 45);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  content: "여";
+  font-size: 0.8em;
+  margin: 0 0.1rem;
+}
+
+/* 연락처 */
+.filter-list__item__about__call a img {
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* 이름 */
+.filter-list__item__name {
+  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
 /* FilterItemDetail */

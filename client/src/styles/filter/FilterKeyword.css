@@ -6,15 +6,15 @@
 
 .filter-keyword {
   width: 90%;
-  margin: 0;
 }
 
 .filter-keyword div {
-  margin: 2px;
+  margin: 0.2rem;
   float: left;
-  background-color: #005691;
-  color: #fafafa;
+  background-color: white;
+  border: rgb(90, 90, 90) solid 0.01rem;
+  color: rgb(90, 90, 90);
   font-size: 0.8em;
-  border-radius: 0.25em;
-  padding: 0 2px;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
 }

@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { InfoWindow, Marker } from "react-google-maps";
 
 const ShelterMarker = props => {
-  console.log(props);
   // const { details, position, shelter, currentShelter } = props;
   // const { restAreaName, sexType, byperedType } = details;
   const { position, shelter, currentShelter } = props;
   const { RESTARER_NM, SEX_TYPE, BYPERD_TYPE } = shelter;
-  // const [infoWindowVisible, setInfoWindowVisible] = useState(true);
 
   const showInfoWindow = () => {
     if (currentShelter === shelter) {
@@ -31,18 +29,23 @@ const ShelterMarker = props => {
     // setInfoWindowVisible(false);
   };
 
+  const sexTypesSplit = {
+    M: ["M"],
+    F: ["F"],
+    ALL: ["M", "F"]
+  };
+
+  console.log("SS", sexTypesSplit[SEX_TYPE]);
+
   const koToEngSex = {
-    남: "male",
-    여: "female",
+    M: "male",
+    F: "female"
   };
 
   const koToEngByprd = {
-    // 일시
     일시: "awhile",
-    // 단기
     단기: "short",
-    // 중장기
-    중장기: "mid-and-long",
+    중장기: "mid-and-long"
   };
 
   return (
@@ -57,9 +60,12 @@ const ShelterMarker = props => {
           onCloseClick={closeInfoWindow}
         >
           <div className="shelter-marker__window__contents">
+            <div className="shelter-marker__window__contents__shelter-name">
+              {RESTARER_NM}
+            </div>
             <div className="shelter-marker__window__contents__type">
               <div className="shelter-marker__window__contents__sex-type">
-                {SEX_TYPE.split(",").map((sex, idx) => (
+                {sexTypesSplit[SEX_TYPE].map((sex, idx) => (
                   <div
                     alt={sex}
                     className={`shelter-marker__window__contents__sex-type__${koToEngSex[sex]}`}
@@ -72,9 +78,6 @@ const ShelterMarker = props => {
                   className={`shelter-marker__window__contents__byperd-type__${koToEngByprd[BYPERD_TYPE]}`}
                 />
               </div>
-            </div>
-            <div className="shelter-marker__window__contents__shelter-name">
-              {RESTARER_NM}
             </div>
           </div>
         </InfoWindow>

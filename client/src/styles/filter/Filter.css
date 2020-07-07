@@ -1,7 +1,8 @@
 /* filter */
 .filter {
   width: 25%;
-  height: 90vh;
+  /* height: 90vh; */
+  /* overflow-y: scroll; */
   min-width: 400px;
   background-color: #fafafa;
 }
