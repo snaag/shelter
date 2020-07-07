@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   setFilteredShelters,
   setFilterConditions,
-  changeButtonsStatus
+  changeButtonsStatus,
 } from "../../actions/index";
 import FilterCondition from "../../components/filter/FilterCondition";
 
@@ -19,12 +19,14 @@ const mapDispatchToProps = dispatch => {
         }
       }
       axios
-        .get("http://localhost:4000/shelter" + params)
+        .get(
+          `http://ec2-3-128-30-232.us-east-2.compute.amazonaws.com:4000/shelter${params}`
+        )
         .then(({ data }) => {
           return dispatch(setFilteredShelters(data.shelters));
         })
-        .catch(({ response }) => {
-          if (response.status === 404) {
+        .catch(err => {
+          if (err.response && err.response.status === 404) {
             return dispatch(setFilteredShelters([]));
           }
         });
@@ -32,7 +34,7 @@ const mapDispatchToProps = dispatch => {
     dispatchConditions: conditions => {
       return dispatch(setFilterConditions(conditions));
     },
-    changeButtonsStatus: status => dispatch(changeButtonsStatus(status))
+    changeButtonsStatus: status => dispatch(changeButtonsStatus(status)),
   };
 };
 

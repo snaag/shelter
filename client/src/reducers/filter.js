@@ -5,6 +5,7 @@ import {
 } from "../actions/index";
 
 const initialState = {
+  currentShelter: {},
   shelters: [],
   conditions: {
     SEX_TYPE: [],

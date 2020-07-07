@@ -8,7 +8,7 @@ class FilterItemDetail extends Component {
       sexType = "남";
     } else if (shelter.SEX_TYPE === "F") {
       sexType = "여";
-    } else if (shelter.SEX_TYPE == "ALL") {
+    } else if (shelter.SEX_TYPE === "ALL") {
       sexType = "남 / 여";
     }
 

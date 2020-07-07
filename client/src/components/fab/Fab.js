@@ -7,33 +7,33 @@ const Fab = props => {
     mapButtonActive,
     locationButtonActive,
     listButtonActive,
-    commentButtonActive
+    commentButtonActive,
   } = menusStatus;
 
   const menuType = {
     location: {
       id: 0,
-      iconClassName: "fa-compass"
+      iconClassName: "fa-compass",
     },
     map: {
       id: 1,
-      iconClassName: "fa-map"
+      iconClassName: "fa-map",
     },
     list: {
       id: 2,
-      iconClassName: "fa-list"
+      iconClassName: "fa-list",
     },
     comment: {
       id: 3,
-      iconClassName: "fa-comment-alt"
-    }
+      iconClassName: "fa-comment-alt",
+    },
   };
 
   const createButton = type => {
-    const { id, iconClassName } = type;
+    const { iconClassName } = type;
     return (
-      <div class="fab fab-icon-holder">
-        <i class={`fas ${iconClassName}`}></i>
+      <div className="fab fab-icon-holder">
+        <i className={`fas ${iconClassName}`}></i>
       </div>
     );
   };
@@ -41,7 +41,7 @@ const Fab = props => {
   return (
     <>
       {menusActive && (
-        <div class="fab-container">
+        <div className="fab-container">
           {mapButtonActive && createButton(menuType.map)}
           {locationButtonActive && createButton(menuType.location)}
           {listButtonActive && createButton(menuType.list)}

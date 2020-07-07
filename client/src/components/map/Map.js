@@ -2,7 +2,7 @@ import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 
 import "../../styles/Map.css";
-import ShelterDetail from "./ShelterMarker";
+import ShelterDetail from "../../containers/map/ShelterMarkerContainer";
 import { googleMap } from "../../config/apiKey";
 
 const centerOfLocations = locations => {
@@ -22,31 +22,32 @@ const getLocations = shelters => {
   shelters.forEach(shelter => {
     ret.push({
       lat: Number(shelter.REFINE_WGS84_LAT),
-      lng: Number(shelter.REFINE_WGS84_LOGT)
+      lng: Number(shelter.REFINE_WGS84_LOGT),
     });
   });
 
   return ret;
 };
 
-const getDetails = shelters => {
-  const ret = [];
+// const getDetails = shelters => {
+//   const ret = [];
 
-  shelters.forEach(shelter => {
-    ret.push({
-      sexType: shelter.SEX_TYPE,
-      restAreaName: shelter.RESTARER_NM,
-      byperedType: shelter.BYPERD_TYPE,
-      location: shelter.REFINE_LOTNO_ADDR
-    });
-  });
+//   shelters.forEach(shelter => {
+//     ret.push({
+//       sexType: shelter.SEX_TYPE,
+//       restAreaName: shelter.RESTARER_NM,
+//       byperedType: shelter.BYPERD_TYPE,
+//       location: shelter.REFINE_LOTNO_ADDR,
+//     });
+//   });
 
-  return ret;
-};
+//   return ret;
+// };
 
 const Map = props => {
   const positions = getLocations(props.shelters);
-  const details = getDetails(props.shelters);
+  // const details = getDetails(props.shelters);
+  const shelters = props.shelters;
 
   const MapWithAMarker = withScriptjs(
     withGoogleMap(props => (
@@ -54,12 +55,17 @@ const Map = props => {
         defaultZoom={13}
         defaultCenter={props.defaultCenter}
         defaultOptions={{
-          disableDefaultUI: true
+          disableDefaultUI: true,
         }}
       >
         {props.positions &&
           props.positions.map((position, idx) => (
-            <ShelterDetail position={position} details={props.details[idx]} />
+            <ShelterDetail
+              position={position}
+              // details={props.details[idx]}
+              shelter={shelters[idx]}
+              key={shelters[idx].id}
+            />
           ))}
       </GoogleMap>
     ))
@@ -74,7 +80,8 @@ const Map = props => {
           containerElement={<div style={{ height: `90vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           positions={positions}
-          details={details}
+          // details={details}
+          shelter={props.shelter}
           defaultCenter={centerOfLocations(positions)}
         />
       )}

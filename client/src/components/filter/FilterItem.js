@@ -14,13 +14,14 @@ class FilterItem extends Component {
   handleItemClick(event) {
     if (event.target.name === "call") return;
 
-    this.props.onItemClick(this.props.shelter);
-    if (Object.keys(this.state.currentShelter).length === 0) {
+    if (this.props.shelter === this.props.currentShelter) {
+      this.props.onItemClick({});
+      this.setState({ currentShelter: {} });
+    } else {
+      this.props.onItemClick(this.props.shelter);
       this.setState({
         currentShelter: this.props.shelter,
       });
-    } else {
-      this.setState({ currentShelter: {} });
     }
   }
 
@@ -28,13 +29,13 @@ class FilterItem extends Component {
     let shelter = this.props.shelter;
     let sexType;
     if (shelter.SEX_TYPE === "M") {
-      sexType = <img src={icon.male} alt="" />;
+      sexType = <img src={icon.male} alt="M" />;
     } else if (shelter.SEX_TYPE === "F") {
-      sexType = <img src={icon.female} alt="" />;
-    } else if (shelter.SEX_TYPE == "ALL") {
+      sexType = <img src={icon.female} alt="F" />;
+    } else if (shelter.SEX_TYPE === "ALL") {
       sexType = [
-        <img src={icon.male} alt="" />,
-        <img src={icon.female} alt="" />
+        <img src={icon.male} alt="M" key="M" />,
+        <img src={icon.female} alt="F" key="F" />,
       ];
     }
 
@@ -44,13 +45,15 @@ class FilterItem extends Component {
           <div className="filter-list__item__name">{shelter.RESTARER_NM}</div>
           <div className="filter-list__item__tel">
             <a href={`tel:${shelter.CONTCT_NO}`}>
-              <img src={icon.phone} alt="" name="call" />
+              <img src={icon.phone} alt="call" name="call" />
             </a>
           </div>
           <div className="filter-list__item__sex-type">{sexType}</div>
           <div className="filter-list__item__period">{shelter.BYPERD_TYPE}</div>
         </div>
-        <FilterItemDetail shelter={this.state.currentShelter} />
+        {this.props.shelter === this.props.currentShelter && (
+          <FilterItemDetail shelter={this.props.shelter} />
+        )}
       </div>
     );
   }

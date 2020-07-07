@@ -8,15 +8,17 @@ class FilterKeyword extends Component {
     return (
       <div className="filter-keyword">
         {conditions.SEX_TYPE.map(condition => (
-          <div className="filter-keyword__sex">
+          <div className="filter-keyword__sex" key={condition}>
             {condition === "M" ? "남자" : "여자"}
           </div>
         ))}
         {conditions.BYPERD_TYPE.map(condition => (
-          <div className="filter-keyword__period">{condition}</div>
+          <div className="filter-keyword__period" key={condition}>
+            {condition}
+          </div>
         ))}
         {conditions.SIGUN_CD.map(condition => (
-          <div className="filter-keyword__cities">
+          <div className="filter-keyword__cities" key={condition}>
             {cities[cityCodes.indexOf(condition)]}
           </div>
         ))}
