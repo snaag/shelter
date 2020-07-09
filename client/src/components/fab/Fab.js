@@ -31,12 +31,14 @@ const Fab = props => {
         let list = document.body.querySelector(".filter-list");
         list.classList.add("fold");
 
-        let condition = document.body.querySelector(
+        let foldedCondition = document.body.querySelector(
+          ".filter-condition--fold"
+        );
+        let unFoldedCondition = document.body.querySelector(
           ".filter-condition--unfold"
         );
-        if (condition) {
-          condition.className = "filter-condition--fold";
-        }
+        if (foldedCondition) foldedCondition.classList.add("fold");
+        if (unFoldedCondition) unFoldedCondition.classList.add("fold");
 
         setMapButtonActive(false);
         setListButtonActive(true);
@@ -51,10 +53,15 @@ const Fab = props => {
         let list = document.body.querySelector(".filter-list");
         list.classList.remove("fold");
 
-        let condition = document.body.querySelector(".filter-condition--fold");
-        if (condition) {
-          condition.className = "filter-condition--unfold";
-        }
+        let foldedCondition = document.body.querySelector(
+          ".filter-condition--fold"
+        );
+        let unFoldedCondition = document.body.querySelector(
+          ".filter-condition--unfold"
+        );
+        if (foldedCondition) foldedCondition.classList.remove("fold");
+        if (unFoldedCondition) unFoldedCondition.classList.remove("fold");
+
         setListButtonActive(false);
         setMapButtonActive(true);
       },
