@@ -167,7 +167,7 @@ class Signin extends Component {
                   <input
                     placeholder={
                       this.state.type === "teen"
-                        ? "000-000-0000 형식으로 입력하세요"
+                        ? "9999-99-99 형식으로 입력하세요"
                         : null
                     }
                     className="text-input"
