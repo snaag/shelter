@@ -1,0 +1,27 @@
+.login-container {
+  width: 50%;
+  display: inline-block;
+  z-index: 9999;
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  text-align: right;
+}
+
+.login-container button {
+  margin: 0 1%;
+  border-radius: 15%;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: transparent;
+  outline: transparent;
+  border: none;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.login-container button:hover {
+  font-size: 1.3rem;
+  color: darkblue;
+}

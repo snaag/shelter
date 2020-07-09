@@ -1,39 +1,73 @@
-const { staffs } = require("../../models");
+const { staffs, teens } = require("../../models");
 const { tokenGenerator } = require("../../utils/tokenGenerator");
 
 module.exports = {
   signup: async (req, res) => {
     try {
-      let { email, name, password, tel, shelterId } = req.body;
-      const [staff, created] = await staffs.findOrCreate({
-        where: {
-          email,
-        },
-        defaults: {
+      let {
+        type,
+        sex,
+        birthdate,
+        email,
+        name,
+        password,
+        tel,
+        shelterId,
+      } = req.body;
+
+      if (type === "staff") {
+        const [user, created] = await staffs.findOrCreate({
+          where: {
+            email,
+          },
+          defaults: {
+            name,
+            tel,
+            shelterId,
+            password,
+          },
+        });
+        if (!created) {
+          res.status(401).send(`User with email: ${email} already exists`);
+        } else {
+          res.status(201).send("Sign up");
+        }
+      } else if (type === "teen") {
+        const teen = await teens.create({
           name,
+          sex,
+          birthdate: new Date(birthdate),
           tel,
-          shelterId,
-          password,
-        },
-      });
-      if (!created) {
-        res.status(401).send(`User with email: ${email} already exists`);
-      } else {
-        res.status(201).send("Sign up");
-      }
+        });
+        if (teen) {
+          res.status(201).send("Sign up");
+        } else res.sendStatus(400);
+      } else res.status(400).send("Please input correct type");
     } catch (e) {
       res.status(500).send("Sorry, cannot process your request now");
     }
   },
   signin: async (req, res) => {
     try {
-      let { email, password } = req.body;
-      let user = await staffs.findOne({
-        where: {
-          email: email,
-          password: password,
-        },
-      });
+      let { type, email, password, tel, name } = req.body;
+      let user;
+      if (type === "staff") {
+        user = await staffs.findOne({
+          where: {
+            email: email,
+            password: password,
+          },
+        });
+      } else if (type === "teen") {
+        user = await teens.findOne({
+          where: {
+            tel: tel,
+            name: name,
+          },
+        });
+      } else {
+        res.status(400).send("cannot recognize type of request");
+      }
       if (user) {
         if (req.user === undefined) {
           let token = tokenGenerator(user.dataValues, req);

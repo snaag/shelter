@@ -1,0 +1,17 @@
+.signout {
+  padding: 30% auto;
+  height: 100%;
+  width: 100vw;
+  display: inline-block;
+  text-align: center;
+}
+.signout h1 {
+  margin: 10% auto;
+}
+.signout button {
+  font-size: 2rem;
+  width: 30%;
+  height: 20%;
+  margin: 5% 10%;
+  text-align: center;
+}

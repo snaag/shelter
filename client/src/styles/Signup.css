@@ -1,0 +1,110 @@
+.signup {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.type-button-container {
+  margin: 0 auto;
+  display: inline-block;
+  width: 100%;
+  height: 50%;
+}
+
+.type-button {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border: none;
+  outline: transparent;
+  font-size: 2rem;
+  display: block;
+  margin: 10% 5%;
+  width: 20%;
+  height: 20vh;
+  display: inline-block;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.type-button:hover {
+  background-color: lightblue;
+  font-weight: bold;
+}
+
+.home-button {
+  width: 80%;
+  height: 20%;
+  background-color: transparent;
+  margin: 2% auto;
+  font-weight: bold;
+  border: none;
+  outline: transparent;
+  font-size: 1.2rem;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.home-button:hover {
+  font-size: 1.5rem;
+}
+
+/* Signup Form Styling */
+.signup-form {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.signup-form h4 {
+  font-size: 1.2rem;
+  margin: 1% auto;
+}
+
+.text-input {
+  outline: transparent;
+  width: 30%;
+  height: 30%;
+  transition-property: all;
+  transition-duration: 0.2s;
+}
+
+.text-input:focus {
+  border: none;
+  background-color: lightblue;
+  color: darkblue;
+  width: 40%;
+}
+
+.signup-form-item {
+  font-size: 1.2rem;
+  margin: 2% auto;
+  display: block;
+  font-size: 1.2rem;
+}
+
+.radio-input {
+  margin: 0 10%;
+}
+
+.submit-button {
+  padding: 1%;
+  border: none;
+  background-color: black;
+  color: white;
+  margin: auto;
+  font-weight: bold;
+  outline: transparent;
+  font-size: 1rem;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.submit-button:hover {
+  font-size: 1.2rem;
+  background-color: transparent;
+  color: black;
+}

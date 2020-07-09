@@ -1,9 +1,206 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { changeUserLoginStatus } from "../actions/index";
+import { withRouter } from "react-router";
 
 class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: "staff",
+      loading: false,
+      error: false,
+      email: "",
+      password: "",
+      tel: "",
+      name: "",
+    };
+    this.goHome = this.goHome.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleEmailInput = this.handleEmailInput.bind(this);
+    this.handlePasswordInput = this.handlePasswordInput.bind(this);
+    this.handleSignupClick = this.handleSignupClick.bind(this);
+    this.handleTypeCheck = this.handleTypeCheck.bind(this);
+    this.handleName = this.handleName.bind(this);
+    this.handleTel = this.handleTel.bind(this);
+  }
+
+  componentDidMount() {}
+
+  goHome() {
+    this.props.history.push("/");
+  }
+
+  handleEmailInput(e) {
+    this.setState({
+      email: e.target.value,
+    });
+  }
+
+  handlePasswordInput(e) {
+    this.setState({
+      password: e.target.value,
+    });
+  }
+
+  handleSignupClick() {
+    this.props.history.push("/signup");
+  }
+
+  handleName(e) {
+    this.setState({
+      name: e.target.value,
+    });
+  }
+
+  handleTel(e) {
+    this.setState({
+      tel: e.target.value,
+    });
+  }
+
+  async handleFormSubmit(e) {
+    this.setState({ loading: true });
+    e.preventDefault();
+    let body = {};
+    if (this.state.type === "teen") {
+      body.type = this.state.type;
+      body.name = this.state.name;
+      body.tel = this.state.tel;
+    } else {
+      body.type = this.state.type;
+      body.email = this.state.email;
+      body.password = this.state.password;
+    }
+    let status = await fetch(
+      "http://ec2-3-128-30-232.us-east-2.compute.amazonaws.com:4000/user/signin",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }
+    ).then(resp => {
+      return resp.status;
+    });
+    this.setState({ loading: false });
+    if (status === 200) {
+      this.props.changeLogin(true);
+      this.props.history.push("/");
+    } else {
+      this.props.changeLogin(false);
+      this.setState({ error: true });
+    }
+  }
+
+  handleTypeCheck(e) {
+    this.setState({
+      type: e.target.value,
+    });
+  }
+
   render() {
-    return <div>Signin</div>;
+    return (
+      <div className="signin-container">
+        {this.state.loading ? (
+          <h1>Logging in...</h1>
+        ) : (
+          <>
+            <form onSubmit={this.handleFormSubmit} className="signin-form">
+              <div className="signup-form-item">
+                <h4>회원 유형</h4>
+                <label for="teen">청소년</label>
+                <input
+                  className="radio-input"
+                  onChange={this.handleTypeCheck}
+                  type="radio"
+                  id="teen"
+                  name="sex"
+                  value="teen"
+                />
+                <label for="staff">관리자</label>
+                <input
+                  className="radio-input"
+                  onChange={this.handleTypeCheck}
+                  type="radio"
+                  id="staff"
+                  name="sex"
+                  value="staff"
+                />
+              </div>
+              <div className="signin-form-item">
+                <label>
+                  <h4>{this.state.type === "teen" ? "Name" : "E-mail"}</h4>
+                  <input
+                    className="text-input"
+                    onChange={
+                      this.state.type === "teen"
+                        ? this.handleName
+                        : this.handleEmailInput
+                    }
+                    value={
+                      this.state.type === "teen"
+                        ? this.state.name
+                        : this.state.email
+                    }
+                    type={this.state.type === "teen" ? "name" : "email"}
+                    name={this.state.type === "teen" ? "name" : "email"}
+                  />
+                </label>
+              </div>
+
+              <div className="signin-form-item">
+                <label>
+                  <h4>
+                    {this.state.type === "teen" ? "Birthdate" : "Password"}
+                  </h4>
+                  <input
+                    placeholder={
+                      this.state.type === "teen"
+                        ? "000-000-0000 형식으로 입력하세요"
+                        : null
+                    }
+                    className="text-input"
+                    onChange={
+                      this.state.type === "teen"
+                        ? this.handleTel
+                        : this.handlePasswordInput
+                    }
+                    type={this.state.type === "teen" ? "birthdate" : "password"}
+                    name={this.state.type === "teen" ? "birthdate" : "password"}
+                  />
+                </label>
+              </div>
+              <div className="signin-form-item">
+                <input className="submit-button" type="submit" value="Submit" />
+              </div>
+            </form>
+            <div className="signin-redirection">
+              <h3>계정이 없으신가요 ?</h3>
+              <button onClick={this.handleSignupClick}>회원가입</button>
+              <button className="home-button" onClick={e => this.goHome(e)}>
+                홈페이지
+              </button>
+            </div>
+          </>
+        )}
+        {this.state.error ? (
+          <div className="signin-error-container">
+            <h2>이메일과 패스워드를 다시 확인해주세요</h2>
+          </div>
+        ) : null}
+      </div>
+    );
   }
 }
 
-export default Signin;
+const mapStateToProps = state => ({
+  loginStatus: state.loginReducer.loginStatus,
+});
+
+const mapDispatchToProps = dispatch => {
+  return { changeLogin: status => dispatch(changeUserLoginStatus(status)) };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signin));

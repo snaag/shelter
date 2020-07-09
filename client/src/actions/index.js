@@ -7,12 +7,12 @@ const SET_CURRENT_SHELTER = "SET_CURRENT_SHELTER";
 
 const setFilterConditions = conditions => ({
   type: SET_FILTER_CONDITIONS,
-  conditions
+  conditions,
 });
 
 const setFilteredShelters = shelters => ({
   type: SET_FILTERED_SHELTERS,
-  shelters
+  shelters,
 });
 
 const setCurrentShelter = shelter => ({
@@ -52,6 +52,14 @@ const changeCommentButtonStatus = createAction(
   status => status
 );
 
+//Login
+
+const CHANGE_USER_LOGIN_STATUS = "CHANGE_USER_LOGIN_STATUS";
+
+const changeUserLoginStatus = status => ({
+  type: CHANGE_USER_LOGIN_STATUS,
+  status,
+});
 
 export {
   // Filter
@@ -73,5 +81,8 @@ export {
   changeMapButtonStatus,
   changeLocationButtonStatus,
   changeListButtonStatus,
-  changeCommentButtonStatus
+  changeCommentButtonStatus,
+  //LOGIN
+  CHANGE_USER_LOGIN_STATUS,
+  changeUserLoginStatus,
 };
