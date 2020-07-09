@@ -6,7 +6,7 @@ class FilterItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentShelter: {}
+      currentShelter: {},
     };
     this.handleItemClick = this.handleItemClick.bind(this);
   }
@@ -20,7 +20,7 @@ class FilterItem extends Component {
     } else {
       this.props.onItemClick(this.props.shelter);
       this.setState({
-        currentShelter: this.props.shelter
+        currentShelter: this.props.shelter,
       });
     }
   }
@@ -31,17 +31,18 @@ class FilterItem extends Component {
     const sexTypesSplit = {
       M: ["male"],
       F: ["female"],
-      ALL: ["male", "female"]
+      ALL: ["male", "female"],
     };
 
     const koToEngByprd = {
       일시: "awhile",
       단기: "short",
-      중장기: "mid-and-long"
+      중장기: "mid-and-long",
     };
 
     return (
       <div className="filter-list__item" onClick={this.handleItemClick}>
+        <div className="filter-list__item__name">{shelter.RESTARER_NM}</div>
         <div className="filter-list__item__about">
           <div className="filter-list__item__about__type">
             <div
@@ -59,7 +60,7 @@ class FilterItem extends Component {
             </a>
           </div>
         </div>
-        <div className="filter-list__item__name">{shelter.RESTARER_NM}</div>
+
         {this.props.shelter === this.props.currentShelter && (
           <FilterItemDetail shelter={this.props.shelter} />
         )}

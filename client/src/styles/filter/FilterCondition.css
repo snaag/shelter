@@ -10,7 +10,6 @@
 .filter-condition--unfold {
   background-color: #fafafa;
   text-align: center;
-  box-shadow: 0 0 0.3rem 0 rgba(0, 0, 0, 0.2);
 }
 
 /* 검색 버튼 */
@@ -18,9 +17,8 @@
   background-color: white;
   border-top: 0.01rem solid rgba(90, 90, 90, 0.2);
   border-bottom: 0.125rem solid rgba(90, 90, 90, 0.2);
-  height: 2.5rem;
+  min-height: 2.5rem;
   padding: 0.25rem;
-  overflow: auto;
 }
 
 .filter-condition__fold-button > img {

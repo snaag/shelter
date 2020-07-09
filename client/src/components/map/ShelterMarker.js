@@ -52,6 +52,11 @@ const ShelterMarker = props => {
               {RESTARER_NM}
             </div>
             <div className="shelter-marker__window__contents__type">
+              <div className="shelter-marker__window__contents__byperd-type">
+                <div
+                  className={`shelter-marker__window__contents__byperd-type__${koToEngByprd[BYPERD_TYPE]}`}
+                />
+              </div>
               <div className="shelter-marker__window__contents__sex-type">
                 {sexTypesSplit[SEX_TYPE].map((sex, idx) => (
                   <div
@@ -60,11 +65,6 @@ const ShelterMarker = props => {
                     key={idx}
                   ></div>
                 ))}
-              </div>
-              <div className="shelter-marker__window__contents__byperd-type">
-                <div
-                  className={`shelter-marker__window__contents__byperd-type__${koToEngByprd[BYPERD_TYPE]}`}
-                />
               </div>
             </div>
           </div>

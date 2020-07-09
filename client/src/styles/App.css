@@ -21,6 +21,28 @@
   width: 100vw;
 }
 
+
+@media screen and (min-width: 480px) {
+  .fab-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .filter {
+    max-width: 100%;
+    height: initial;
+  }
+}
+
+.fold {
+  display: none;
+}
+
 /* .App {
   text-align: center;
 }

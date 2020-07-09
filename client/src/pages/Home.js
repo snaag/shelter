@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Login from "../containers/login/Login";
 import Filter from "../components/filter/Filter";
 import MapContainer from "../containers/map/MapContainer";
-import FabContainer from "../containers/fab/FabContainer";
+import FabContainer from "../components/fab/Fab";
 
 class Home extends Component {
   render() {

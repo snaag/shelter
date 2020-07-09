@@ -78,12 +78,20 @@ const Map = props => {
   const [curPos, setCurPos] = useState({});
 
   if (Object.keys(curPos).length === 0) {
-    navigator.geolocation.getCurrentPosition(position => {
-      setCurPos({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      });
-    });
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        setCurPos({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      () => {
+        setCurPos({
+          lat: 37.288122,
+          lng: 126.979956,
+        });
+      }
+    );
   }
 
   const MapWithAMarker = withScriptjs(
@@ -130,14 +138,7 @@ const Map = props => {
           loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
           containerElement={<div style={{ height: `100%`, width: `100%` }} />}
           mapElement={<div style={{ height: `100%`, width: `100%` }} />}
-          defaultCenter={
-            Object.keys(curPos).length === 0
-              ? {
-                  lat: 37.288122,
-                  lng: 126.979956,
-                }
-              : curPos
-          }
+          defaultCenter={curPos}
         />
       )}
     </div>

@@ -16,19 +16,26 @@ class FilterItemDetail extends Component {
       <div>
         {shelter && (
           <div className="filter-item-detail">
-            <div className="filter-item-detail--head-chief">
-              {shelter.HEADCHF_NM}
-            </div>
             <div className="filter-item-detail--address">
+              <span>주소&nbsp;&nbsp;</span>
               {shelter.REFINE_ROADNM_ADDR}
             </div>
-            <div className="filter-item-detail--period">
-              {shelter.BYPERD_TYPE}
-            </div>
             <div className="filter-item-detail--tel">
+              <span>연락처&nbsp;&nbsp;</span>
               <a href={`tel:${shelter.CONTCT_NO}`}>{shelter.CONTCT_NO}</a>
             </div>
-            <div className="filter-item-detail--sex-type">{sexType}</div>
+            <div className="filter-item-detail--head-chief">
+              <span>담당자&nbsp;&nbsp;</span>
+              {shelter.HEADCHF_NM}
+            </div>
+            <div className="filter-item-detail--period">
+              <span>보호기간&nbsp;&nbsp;</span>
+              {shelter.BYPERD_TYPE}
+            </div>
+            <div className="filter-item-detail--sex-type">
+              <span>성별&nbsp;&nbsp;</span>
+              {sexType}
+            </div>
           </div>
         )}
       </div>
