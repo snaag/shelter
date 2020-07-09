@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { changeUserLoginStatus } from "../actions/index";
+import { changeUserLoginStatus, setLoginType } from "../actions/index";
 import { withRouter } from "react-router";
 
 class Signout extends Component {
@@ -31,6 +31,7 @@ class Signout extends Component {
       return resp.status;
     });
     this.setState({ loading: false });
+    if (this.props.loginType !== "") this.props.setLoginType("");
     if (status === 200) {
       this.props.changeLogin(false);
       this.props.history.push("/");
@@ -60,10 +61,14 @@ class Signout extends Component {
 
 const mapStateToProps = state => ({
   loginStatus: state.loginReducer.loginStatus,
+  loginType: state.loginReducer.loginType,
 });
 
 const mapDispatchToProps = dispatch => {
-  return { changeLogin: status => dispatch(changeUserLoginStatus(status)) };
+  return {
+    changeLogin: status => dispatch(changeUserLoginStatus(status)),
+    setLoginType: status => dispatch(setLoginType(status)),
+  };
 };
 
 export default withRouter(

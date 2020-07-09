@@ -55,10 +55,16 @@ const changeCommentButtonStatus = createAction(
 //Login
 
 const CHANGE_USER_LOGIN_STATUS = "CHANGE_USER_LOGIN_STATUS";
+const SET_LOGIN_TYPE = "CHANGE_LOGIN_TYPE";
 
 const changeUserLoginStatus = status => ({
   type: CHANGE_USER_LOGIN_STATUS,
   status,
+});
+
+const setLoginType = loginType => ({
+  type: SET_LOGIN_TYPE,
+  loginType,
 });
 
 export {
@@ -84,5 +90,7 @@ export {
   changeCommentButtonStatus,
   //LOGIN
   CHANGE_USER_LOGIN_STATUS,
+  SET_LOGIN_TYPE,
   changeUserLoginStatus,
+  setLoginType,
 };
