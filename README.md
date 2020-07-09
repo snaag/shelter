@@ -41,7 +41,7 @@
 
 > **청소년 쉼터 검색**
 
-* (쉘터)[http://first-project-shelter.s3-website.ap-northeast-2.amazonaws.com/]로 이동
+* [쉘터](http://first-project-shelter.s3-website.ap-northeast-2.amazonaws.com/)로 이동
 
 * 좌측에 있는 필터의 값을 선택 후  ![image-20200709211552833](/Users/mwbyun/Library/Application Support/typora-user-images/image-20200709211552833.png)
 
