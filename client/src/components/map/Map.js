@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 
-import "../../styles/Map.css";
 import ShelterDetail from "../../containers/map/ShelterMarkerContainer";
 import { googleMap } from "../../config/apiKey";
 
@@ -76,11 +75,22 @@ const Map = props => {
   const positions = getLocations(props.shelters);
   const shelters = props.shelters;
   const zoom = getZoom(props.shelters);
+  const [curPos, setCurPos] = useState({});
+
+  if (Object.keys(curPos).length === 0) {
+    navigator.geolocation.getCurrentPosition(position => {
+      setCurPos({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
+  }
 
   const MapWithAMarker = withScriptjs(
     withGoogleMap(props => (
       <GoogleMap
-        defaultZoom={zoom}
+        // defaultZoom={zoom}
+        defaultZoom={16}
         defaultCenter={props.defaultCenter}
         defaultOptions={{
           disableDefaultUI: true,
@@ -103,18 +113,32 @@ const Map = props => {
       {props.shelters.length > 0 && (
         <MapWithAMarker
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${googleMap}&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `90vh` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
+          loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
+          containerElement={<div style={{ height: `100%`, width: `100%` }} />}
+          mapElement={<div style={{ height: `100%`, width: `100%` }} />}
           positions={positions}
           shelter={props.shelter}
-          defaultCenter={centerOfLocations(positions)}
+          defaultCenter={{
+            lat: Number(shelters[0].REFINE_WGS84_LAT),
+            lng: Number(shelters[0].REFINE_WGS84_LOGT),
+          }}
         />
       )}
       {props.shelters.length === 0 && (
-        <div className="map__need-conditions">
-          <span>성별과 기간, 지역을 고른 후 검색해주세요</span>
-        </div>
+        <MapWithAMarker
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${googleMap}&v=3.exp&libraries=geometry,drawing,places`}
+          loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
+          containerElement={<div style={{ height: `100%`, width: `100%` }} />}
+          mapElement={<div style={{ height: `100%`, width: `100%` }} />}
+          defaultCenter={
+            Object.keys(curPos).length === 0
+              ? {
+                  lat: 37.288122,
+                  lng: 126.979956,
+                }
+              : curPos
+          }
+        />
       )}
     </div>
   );

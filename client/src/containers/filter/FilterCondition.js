@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   setFilteredShelters,
   setFilterConditions,
-  changeButtonsStatus
+  changeButtonsStatus,
 } from "../../actions/index";
 import FilterCondition from "../../components/filter/FilterCondition";
 
@@ -27,18 +27,15 @@ const mapDispatchToProps = dispatch => {
         })
         .catch(err => {
           if (err.response && err.response.status === 404) {
-            return dispatch(setFilteredShelters([]));
+            return dispatch(setFilteredShelters(["empty"]));
           }
         });
     },
     dispatchConditions: conditions => {
       return dispatch(setFilterConditions(conditions));
     },
-    changeButtonsStatus: status => dispatch(changeButtonsStatus(status))
+    changeButtonsStatus: status => dispatch(changeButtonsStatus(status)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FilterCondition);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterCondition);

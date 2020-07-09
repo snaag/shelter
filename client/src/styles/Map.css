@@ -1,10 +1,11 @@
 .map {
-  width: 75%;
+  height: 100%;
+  width: 100%;
 }
 
 .map__need-conditions {
   display: table;
-  height: 90vh;
+  height: 100%;
   width: 100%;
 }
 

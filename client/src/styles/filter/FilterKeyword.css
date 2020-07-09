@@ -5,16 +5,16 @@
 }
 
 .filter-keyword {
-  width: 90%;
+  width: 95%;
 }
 
-.filter-keyword div {
-  margin: 0.2rem;
-  float: left;
-  background-color: white;
-  border: rgb(90, 90, 90) solid 0.01rem;
-  color: rgb(90, 90, 90);
-  font-size: 0.8em;
+.filter-keyword__sex,
+.filter-keyword__period,
+.filter-keyword__cities {
+  margin: 0.1rem;
+  background-color: rgb(90, 90, 90);
+  color: white;
+  font-size: 0.8rem;
   border-radius: 0.3rem;
   padding: 0.1rem 0.3rem;
 }

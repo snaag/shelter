@@ -1,8 +1,11 @@
 /* filter */
 .filter {
-  width: 25%;
-  /* height: 90vh; */
-  /* overflow-y: scroll; */
-  min-width: 400px;
+  height: 100%;
+  max-width: 25rem;
+  min-width: 25rem;
   background-color: #fafafa;
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-rows: 2.5rem;
+  z-index: 5;
 }

@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import "../../styles/filter/FilterList.css";
 import FilterItem from "../../containers/filter/FilterItem";
 
 class FilterList extends Component {
   render() {
     return (
       <div className="filter-list">
-        {this.props.shelters.map((shelter, i) => (
-          <FilterItem key={i} shelter={shelter} />
-        ))}
+        {this.props.shelters.map((shelter, i) => {
+          if (shelter === "empty") {
+            return (
+              <div className="filter-list--empty">검색 결과가 없습니다.</div>
+            );
+          }
+          return <FilterItem key={i} shelter={shelter} />;
+        })}
       </div>
     );
   }

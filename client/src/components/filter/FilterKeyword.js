@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../styles/filter/FilterKeyword.css";
 import { cities, cityCodes } from "../../data/city";
 
 class FilterKeyword extends Component {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FilterKeyword from "../../containers/filter/FilterKeyword";
-import "../../styles/filter/FilterCondition.css";
 import { cities, cityCodes } from "../../data/city";
 import icon from "../../assets/icon";
 
@@ -12,8 +11,8 @@ class FilterCondition extends Component {
       conditions: {
         SEX_TYPE: [],
         BYPERD_TYPE: [],
-        SIGUN_CD: []
-      }
+        SIGUN_CD: [],
+      },
     };
 
     this.foldToggle = this.foldToggle.bind(this);
@@ -27,7 +26,7 @@ class FilterCondition extends Component {
 
   foldToggle() {
     this.setState({
-      fold: !this.state.fold
+      fold: !this.state.fold,
     });
   }
 
@@ -42,33 +41,14 @@ class FilterCondition extends Component {
         target.style = "background-color: ''";
       } else {
         conditions.push(target.title);
-        const styleSexStr =
-          "border-radius: 0.3rem; display: inline-block; color: white;";
-        const styleSex = {
-          color: ["rgb(34, 37, 192)", "rgb(182, 45, 45)"],
-          content: ["남", "여"]
-        };
-
-        if (target.title === "M") {
-          // 남자
-          target.style = `${styleSexStr} background-color: ${
-            styleSex.color[0]
-          }; content: ${styleSex.content[0]}; color: white;`;
-        } else if (target.title === "F") {
-          // 여자
-          target.style = `${styleSexStr} background-color: ${
-            styleSex.color[1]
-          }; content: ${styleSex.content[1]}; color: white;`;
-        } else {
-          target.style = "background-color: #5a5a5a; color: #ffffff;";
-        }
+        target.style = "background-color: #5a5a5a; color: #ffffff;";
       }
 
       let newState = {};
       newState.conditions = {
         SEX_TYPE: this.state.conditions.SEX_TYPE,
         BYPERD_TYPE: this.state.conditions.BYPERD_TYPE,
-        SIGUN_CD: this.state.conditions.SIGUN_CD
+        SIGUN_CD: this.state.conditions.SIGUN_CD,
       };
       newState.conditions[condition] = conditions;
       this.setState(newState);
@@ -78,7 +58,7 @@ class FilterCondition extends Component {
 
   handleButtonClick() {
     this.setState({
-      fold: true
+      fold: true,
     });
     this.props.getAndDispatchShelters(this.state.conditions);
     this.props.changeButtonsStatus(true);
@@ -115,38 +95,44 @@ class FilterCondition extends Component {
                 className="filter-condition__sex__type--male"
                 title="M"
                 onClick={this.handleClickSexType}
-              />
+              >
+                남
+              </div>
               <div
                 className="filter-condition__sex__type--female"
                 title="F"
                 onClick={this.handleClickSexType}
-              />
+              >
+                여
+              </div>
             </div>
           </div>
           <div className="filter-condition__period">
             <div className="filter-condition__period__title">
               <span>기간</span>
             </div>
-            <div
-              className="filter-condition__period__type--daily"
-              title="일시"
-              onClick={this.handleClickPeriods}
-            >
-              일시
-            </div>
-            <div
-              className="filter-condition__period__type--short"
-              title="단기"
-              onClick={this.handleClickPeriods}
-            >
-              단기
-            </div>
-            <div
-              className="filter-condition__period__type--mid-long"
-              title="중장기"
-              onClick={this.handleClickPeriods}
-            >
-              중장기
+            <div className="filter-condition__period__type">
+              <div
+                className="filter-condition__period__type--daily"
+                title="일시"
+                onClick={this.handleClickPeriods}
+              >
+                일시
+              </div>
+              <div
+                className="filter-condition__period__type--short"
+                title="단기"
+                onClick={this.handleClickPeriods}
+              >
+                단기
+              </div>
+              <div
+                className="filter-condition__period__type--mid-long"
+                title="중장기"
+                onClick={this.handleClickPeriods}
+              >
+                중장기
+              </div>
             </div>
           </div>
           <div className="filter-condition__city">
@@ -166,12 +152,9 @@ class FilterCondition extends Component {
               ))}
             </div>
           </div>
-          <button
-            className="filter-condition__filter-button"
-            onClick={this.handleButtonClick}
-          >
-            검색
-          </button>
+          <div className="filter-condition__filter-button">
+            <button onClick={this.handleButtonClick}>검색</button>
+          </div>
         </div>
       </div>
     );
