@@ -1,49 +1,65 @@
 .signin-container {
+  color: rgb(90, 90, 90);
   width: 100%;
   height: 100%;
   display: inline-block;
-  text-align: centers;
+  text-align: center;
+}
+
+.signin-redirection {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 600px;
+  color: rgb(90, 90, 90);
+  text-align: center;
+}
+
+.signin-redirection h1 {
+  margin: 3% 0 0 0;
 }
 
 .signin-redirection button {
-  width: 20%;
+  color: rgb(90, 90, 90);
   background-color: transparent;
-  margin: 3% 5% 20%;
+  width: 40%;
   font-weight: bold;
   border: none;
   outline: transparent;
-  font-size: 1rem;
+  font-size: 1.5rem;
   transition-property: all;
   transition-duration: 0.3s;
 }
 
 .signin-redirection button:hover {
-  font-size: 1.5rem;
+  border-radius: 3em;
+  background-color: rgb(90, 90, 90);
+  color: white;
 }
 
-.signin-container form {
-  margin: 5% auto 5% auto;
-  width: 70%;
-  height: 40vh;
+.signin-form {
+  background-color: rgb(240, 237, 237);
+  border: 1px solid rgb(90, 90, 90);
+  border-radius: 3%;
+  padding: 2% 0 0 0;
+  margin: 5% auto 2% auto;
+  max-width: 600px;
+  width: 80%;
+  height: 60%;
   vertical-align: middle;
 }
+
 .signin-form-item {
+  display: block;
+  text-align: center;
   margin: 5% auto;
   display: block;
 }
 
-.text-input {
-  outline: transparent;
-  width: 60%;
-  height: 30%;
-  transition-property: all;
-  transition-duration: 0.2s;
-}
-
 .submit-button {
   padding: 1%;
-  border: none;
-  background-color: black;
+  border: 1px solid rgb(90, 90, 90);
+  border-radius: 5%;
+  background-color: rgb(90, 90, 90);
   color: white;
   margin: auto;
   font-weight: bold;
@@ -54,24 +70,98 @@
 }
 
 .submit-button:hover {
+  border: none;
   font-size: 1.2rem;
   background-color: transparent;
-  color: black;
+  color: rgb(90, 90, 90);
+}
+
+.text-input {
+  outline: transparent;
+  width: 40%;
+  min-width: 230px;
+  font-size: 1.2rem;
+  transition-property: all;
+  transition-duration: 0.2s;
 }
 
 .text-input:focus {
   border: none;
-  background-color: lightblue;
-  color: darkblue;
+  background-color: rgb(90, 90, 90);
+  color: white;
   width: 70%;
 }
 
-.signin-form-item label h4 {
-  margin: 1%;
+.signin-gender-form-item {
+  font-size: 1.2rem;
+  margin: 0 auto;
+  border: 1px solid rgb(90, 90, 90);
+  background-color: white;
+  color: rgb(90, 90, 90);
+  width: 40%;
+  min-width: 230px;
+  transition-property: all;
+  transition-duration: 0.2s;
+}
+
+.signin-gender-form-item:hover {
+  border: none;
+  background-color: rgb(90, 90, 90);
+  color: white;
+  width: 60%;
+}
+
+.signin-form-item h4 {
+  margin: 1% 0 5% 0;
+  font-size: 1.3rem;
 }
 
 .signin-error-container {
   margin: 0 20%;
-  border: 1px solid black;
+  border: 1px solid rgb(90, 90, 90);
   color: rgb(47, 62, 145);
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  padding: 20%;
+  text-align: center;
+}
+
+.loading-container h1 {
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 3rem;
+}
+
+.dot1 {
+  color: rgb(90, 90, 90);
+  animation: glow 0.6s infinite;
+}
+.dot2 {
+  color: rgb(90, 90, 90);
+  animation: glow 0.6s 0.1s infinite;
+}
+.dot3 {
+  color: rgb(90, 90, 90);
+  animation: glow 0.6s 0.2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    color: rgb(90, 90, 90);
+  }
+  25% {
+    color: lightgrey;
+  }
+  50% {
+    color: white;
+  }
+  75% {
+    color: lightgrey;
+  }
+  100% {
+    color: rgb(90, 90, 90);
+  }
 }

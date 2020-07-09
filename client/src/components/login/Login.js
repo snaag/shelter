@@ -11,9 +11,11 @@ const Login = props => {
       {props.loginStatus ? (
         <button onClick={() => clickHandler("signout")}>로그아웃</button>
       ) : (
-        <button onClick={() => clickHandler("signin")}>로그인</button>
+        <>
+          <button onClick={() => clickHandler("signin")}>로그인</button>
+          <button onClick={() => clickHandler("signup")}>회원가입</button>
+        </>
       )}
-      <button onClick={() => clickHandler("signup")}>회원가입</button>
     </div>
   );
 };

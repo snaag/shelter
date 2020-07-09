@@ -46,14 +46,19 @@ class Signout extends Component {
       <div className="signout">
         <h1>로그아웃 하시겠습니까?</h1>
         {this.state.loading ? (
-          <h2>로그아웃 중...</h2>
+          <div className="sign-out-loading-container">
+            <h1>로그아웃 중</h1>
+            <h1 className="dot1">.</h1>
+            <h1 className="dot2">.</h1>
+            <h1 className="dot3">.</h1>
+          </div>
         ) : (
           <>
-            <button onClick={() => this.goHome()}>HOME</button>
-            <button onClick={() => this.handleSignout()}>로그아웃</button>
+            <button onClick={() => this.goHome()}>⟸ 돌아가기</button>
+            <button onClick={() => this.handleSignout()}>로그아웃 ⟹</button>
           </>
         )}
-        {this.state.error ? <h1>error</h1> : <h1>:)</h1>}
+        {this.state.error ? <h1>error</h1> : null}
       </div>
     );
   }

@@ -5,8 +5,6 @@ import Filter from "../components/filter/Filter";
 import MapContainer from "../containers/map/MapContainer";
 import FabContainer from "../containers/fab/FabContainer";
 
-import "../styles/Login.css";
-
 class Home extends Component {
   render() {
     return (

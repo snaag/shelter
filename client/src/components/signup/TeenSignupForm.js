@@ -87,24 +87,26 @@ class TeenSignupForm extends Component {
           </div>
           <div className="signup-form-item">
             <h4>Gender</h4>
-            <label for="male">M</label>
-            <input
-              className="radio-input"
-              onChange={this.handleInput}
-              type="radio"
-              id="male"
-              name="sex"
-              value="male"
-            />
-            <label for="female">F</label>
-            <input
-              className="radio-input"
-              onChange={this.handleInput}
-              type="radio"
-              id="female"
-              name="sex"
-              value="female"
-            />
+            <div className="gender-form-item">
+              <label for="male">M</label>
+              <input
+                className="radio-input"
+                onChange={this.handleInput}
+                type="radio"
+                id="male"
+                name="sex"
+                value="male"
+              />
+              <label for="female">F</label>
+              <input
+                className="radio-input"
+                onChange={this.handleInput}
+                type="radio"
+                id="female"
+                name="sex"
+                value="female"
+              />
+            </div>
           </div>
           <div className="signup-form-item">
             <label>
@@ -114,6 +116,7 @@ class TeenSignupForm extends Component {
                 onChange={this.handleInput}
                 type="tel"
                 name="tel"
+                placeholder="000-000-0000 형식으로 입력해주세요!"
               />
             </label>
           </div>
@@ -121,8 +124,8 @@ class TeenSignupForm extends Component {
             <input className="submit-button" type="submit" value="Submit" />
           </div>
         </form>
-        <button className="home-button" onClick={this.handleGoBack}>
-          뒤로 돌아가기
+        <button className="back-button" onClick={this.handleGoBack}>
+          ⟸ 뒤로 돌아가기
         </button>
       </>
     );

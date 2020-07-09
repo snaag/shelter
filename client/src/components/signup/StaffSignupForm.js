@@ -126,6 +126,7 @@ class StaffSignupForm extends Component {
               <h4>Tel</h4>
               <input
                 className="text-input"
+                placeholder="000-000-0000 형식으로 입력해주세요!"
                 onChange={this.handleInput}
                 type="tel"
                 name="tel"
@@ -148,8 +149,8 @@ class StaffSignupForm extends Component {
             <input className="submit-button" type="submit" value="Submit" />
           </div>
         </form>
-        <button className="home-button" onClick={this.handleGoBack}>
-          뒤로 돌아가기
+        <button className="back-button" onClick={this.handleGoBack}>
+          ⟸ 뒤로 돌아가기
         </button>
       </>
     );

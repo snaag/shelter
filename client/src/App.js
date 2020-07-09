@@ -6,10 +6,6 @@ import Signup from "./pages/Signup";
 
 import Signout from "./pages/Signout";
 import "./styles/App.css";
-import "./styles/Signin.css";
-import "./styles/Signup.css";
-import "./styles/Signout.css";
-
 
 function App() {
   return (

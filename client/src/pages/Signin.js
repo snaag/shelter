@@ -105,30 +105,38 @@ class Signin extends Component {
     return (
       <div className="signin-container">
         {this.state.loading ? (
-          <h1>Logging in...</h1>
+          <div className="loading-container">
+            <h1>로그인 중</h1>
+            <h1 className="dot1">.</h1>
+            <h1 className="dot2">.</h1>
+            <h1 className="dot3">.</h1>
+          </div>
         ) : (
           <>
+            <h1>환영합니다!</h1>
             <form onSubmit={this.handleFormSubmit} className="signin-form">
-              <div className="signup-form-item">
+              <div className="signin-form-item">
                 <h4>회원 유형</h4>
-                <label for="teen">청소년</label>
-                <input
-                  className="radio-input"
-                  onChange={this.handleTypeCheck}
-                  type="radio"
-                  id="teen"
-                  name="sex"
-                  value="teen"
-                />
-                <label for="staff">관리자</label>
-                <input
-                  className="radio-input"
-                  onChange={this.handleTypeCheck}
-                  type="radio"
-                  id="staff"
-                  name="sex"
-                  value="staff"
-                />
+                <div className="signin-gender-form-item">
+                  <label for="teen">청소년</label>
+                  <input
+                    className="radio-input"
+                    onChange={this.handleTypeCheck}
+                    type="radio"
+                    id="teen"
+                    name="sex"
+                    value="teen"
+                  />
+                  <label for="staff">관리자</label>
+                  <input
+                    className="radio-input"
+                    onChange={this.handleTypeCheck}
+                    type="radio"
+                    id="staff"
+                    name="sex"
+                    value="staff"
+                  />
+                </div>
               </div>
               <div className="signin-form-item">
                 <label>

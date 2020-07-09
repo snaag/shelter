@@ -31,10 +31,10 @@ class Signup extends Component {
   render() {
     return (
       <div className="signup">
+        <h1>환영합니다!</h1>
+        <h1>회원 유형을 선택해 주세요</h1>
         {this.state.picked === "" ? (
           <div className="type-button-container">
-            <h1>환영합니다!</h1>
-            <h1>회원 유형을 선택해 주세요</h1>
             <button
               className="type-button"
               onClick={this.handleTypeClick}
