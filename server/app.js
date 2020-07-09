@@ -5,12 +5,9 @@ const morgan = require("morgan");
 
 const shelterRouter = require("./routes/shelters");
 const userRouter = require("./routes/user");
-
-const chatRouter = require("./routes/chat");
 const { startChat } = require("./controller/chat");
 
 const cookieParser = require("cookie-parser");
-
 
 const app = express();
 const server = require("http").createServer(app);
@@ -24,13 +21,10 @@ app.use(
   cors({
     origin: "*",
     methods: ["GET", "POST"],
-    credentials: true
+    credentials: true,
   })
 );
-//청소년이 사이트에서 접속했을 경우 사용하는 라우팅
-app.get("/teen", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
+
 //스태프가 이메일을 통해 접속할 경우 사용하는 라우팅(테스트용)
 app.get("/staff", function (req, res) {
   res.sendFile(__dirname + "/staff.html");
@@ -38,7 +32,7 @@ app.get("/staff", function (req, res) {
 
 app.use("/shelter", shelterRouter);
 app.use("/user", userRouter);
-app.use("/chat", chatRouter);
+
 //<events>
 //서버에 접속했을때 처음에 전송하는 메세지 : basic-chat
 //스태프가 보내는 메세지 :staff-chat
@@ -48,13 +42,16 @@ app.use("/chat", chatRouter);
 
 //데이터 형태 : {message : 내용}?
 
-//chat의 스페이스로 요청이 들어왔을때!(스페이스는 지점id?+게스트 특정 정보로 만들어야할까?)
+app.use("/chat", function (req, res) {
+  let { shelterId, teenId } = req.body;
 
-const chat = io.of("/chat");
-// 모든 작업은 여기서 진행된다.
-chat.on("connection", socket => {
-  console.log("chat 시작!");
-  startChat(socket, chat);
+  const chat = io.of(`/chat/${shelterId}/${teenId}`);
+  chat.on("connection", socket => {
+    console.log("chat 시작!");
+    startChat(socket, chat, obj);
+  });
+  res.status(200).send("chatting start!");
+  // res.sendFile(__dirname + "/index.html");
 });
 
 // app.set("port", port);

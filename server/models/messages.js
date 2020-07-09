@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   messages.init(
     {
+      type: DataTypes.STRING,
       senderId: DataTypes.INTEGER,
       roomId: DataTypes.INTEGER,
       textContent: DataTypes.STRING,

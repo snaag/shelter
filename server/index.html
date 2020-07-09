@@ -15,7 +15,9 @@
     />
   </body>
   <script>
-    var socket = io.connect("http://localhost:4000/chat");
+    let s = 1;
+    let t = 1;
+    var socket = io.connect(`http://localhost:4000/chat/${s}/${t}`);
     //첫 안내메세지가 왔을때 렌더링
     socket.on("basic-chat", function (data) {
       let chat = document.querySelector("#chat");

@@ -21,14 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             .createHmac("sha256", secret.shelter)
             .update(staffs.password)
             .digest("hex");
-          staffs.email = crypto
-            .createHmac("sha256", secret.shelter)
-            .update(staffs.email)
-            .digest("hex");
-          staffs.name = crypto
-            .createHmac("sha256", secret.shelter)
-            .update(staffs.name)
-            .digest("hex");
         },
         beforeFind: (staffs, options) => {
           for (let condition in staffs.where) {

@@ -130,4 +130,4 @@ const getShelters = async () => {
     console.error(e);
   }
 };
-getShelters();
+// getShelters();

@@ -43,6 +43,7 @@ module.exports = {
         } else res.sendStatus(400);
       } else res.status(400).send("Please input correct type");
     } catch (e) {
+      console.log(e);
       res.status(500).send("Sorry, cannot process your request now");
     }
   },
