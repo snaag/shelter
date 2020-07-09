@@ -14,7 +14,6 @@ module.exports = {
         tel,
         shelterId,
       } = req.body;
-
       if (type === "staff") {
         const [user, created] = await staffs.findOrCreate({
           where: {
@@ -28,19 +27,19 @@ module.exports = {
           },
         });
         if (!created) {
-          res.status(401).send(`User with email: ${email} already exists`);
+          res.status(401).send(`Userwith email: ${email} already exists`);
         } else {
-          res.status(201).send("Sign up");
+          res.status(201).send({ id: user.id });
         }
       } else if (type === "teen") {
         const teen = await teens.create({
           name,
           sex,
-          birthdate: new Date(birthdate),
+          birthdate: birthdate,
           tel,
         });
         if (teen) {
-          res.status(201).send("Sign up");
+          res.status(201).send({ id: teen.id });
         } else res.sendStatus(400);
       } else res.status(400).send("Please input correct type");
     } catch (e) {
@@ -72,7 +71,7 @@ module.exports = {
         if (req.user === undefined) {
           let token = tokenGenerator(user.dataValues, req);
           res.cookie("authorization", token);
-          res.status(200).send(`Welcome ${req.body.email}`);
+          res.status(200).send({ id: user.id });
         } else {
           let idChecked = true;
           let skip = ["iat", "exp", "expiredAt", "hostname"];
@@ -84,9 +83,7 @@ module.exports = {
             }
           }
           if (idChecked) {
-            res
-              .status(200)
-              .send(`Hi ${req.body.email}, you are already logged-in`);
+            res.status(200).send({ id: user.id });
           } else {
             if (req.cookies.authorization) {
               res.cookie("authorization", undefined);
