@@ -1,51 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import { InfoWindow, Marker } from "react-google-maps";
 
 const ShelterMarker = props => {
-  // const { details, position, shelter, currentShelter } = props;
-  // const { restAreaName, sexType, byperedType } = details;
   const { position, shelter, currentShelter } = props;
   const { RESTARER_NM, SEX_TYPE, BYPERD_TYPE } = shelter;
 
   const showInfoWindow = () => {
     if (currentShelter === shelter) {
       props.onInfoWindowClick({});
-      // setInfoWindowVisible(false);
     } else {
       props.onInfoWindowClick(shelter);
-      // setInfoWindowVisible(true);
     }
-
-    // if (infoWindowVisible) {
-    //   props.onInfoWindowClick(shelter);
-    // } else {
-    //   props.onInfoWindowClick({});
-    // }
-    // setInfoWindowVisible(!infoWindowVisible);
   };
 
   const closeInfoWindow = () => {
     props.onInfoWindowClick({});
-    // setInfoWindowVisible(false);
   };
 
   const sexTypesSplit = {
     M: ["M"],
     F: ["F"],
-    ALL: ["M", "F"]
+    ALL: ["M", "F"],
   };
 
   console.log("SS", sexTypesSplit[SEX_TYPE]);
 
   const koToEngSex = {
     M: "male",
-    F: "female"
+    F: "female",
   };
 
   const koToEngByprd = {
     일시: "awhile",
     단기: "short",
-    중장기: "mid-and-long"
+    중장기: "mid-and-long",
   };
 
   return (

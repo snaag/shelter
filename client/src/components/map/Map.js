@@ -31,7 +31,7 @@ const getZoom = locations => {
     20: 12,
     30: 11,
     350: 10,
-    over: 9
+    over: 9,
   };
   const length = locations.length;
   const latLng = [];
@@ -40,7 +40,7 @@ const getZoom = locations => {
   locations.forEach(location => {
     latLng.push({
       lng: Number(location.REFINE_WGS84_LOGT),
-      lat: Number(location.REFINE_WGS84_LAT)
+      lat: Number(location.REFINE_WGS84_LAT),
     });
   });
 
@@ -65,31 +65,15 @@ const getLocations = shelters => {
   shelters.forEach(shelter => {
     ret.push({
       lat: Number(shelter.REFINE_WGS84_LAT),
-      lng: Number(shelter.REFINE_WGS84_LOGT)
+      lng: Number(shelter.REFINE_WGS84_LOGT),
     });
   });
 
   return ret;
 };
 
-// const getDetails = shelters => {
-//   const ret = [];
-
-//   shelters.forEach(shelter => {
-//     ret.push({
-//       sexType: shelter.SEX_TYPE,
-//       restAreaName: shelter.RESTARER_NM,
-//       byperedType: shelter.BYPERD_TYPE,
-//       location: shelter.REFINE_LOTNO_ADDR,
-//     });
-//   });
-
-//   return ret;
-// };
-
 const Map = props => {
   const positions = getLocations(props.shelters);
-  // const details = getDetails(props.shelters);
   const shelters = props.shelters;
   const zoom = getZoom(props.shelters);
 
@@ -99,14 +83,13 @@ const Map = props => {
         defaultZoom={zoom}
         defaultCenter={props.defaultCenter}
         defaultOptions={{
-          disableDefaultUI: true
+          disableDefaultUI: true,
         }}
       >
         {props.positions &&
           props.positions.map((position, idx) => (
             <ShelterDetail
               position={position}
-              // details={props.details[idx]}
               shelter={shelters[idx]}
               key={shelters[idx].id}
             />
@@ -124,7 +107,6 @@ const Map = props => {
           containerElement={<div style={{ height: `90vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           positions={positions}
-          // details={details}
           shelter={props.shelter}
           defaultCenter={centerOfLocations(positions)}
         />
