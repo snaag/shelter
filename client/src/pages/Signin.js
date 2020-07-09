@@ -161,13 +161,11 @@ class Signin extends Component {
 
               <div className="signin-form-item">
                 <label>
-                  <h4>
-                    {this.state.type === "teen" ? "Birthdate" : "Password"}
-                  </h4>
+                  <h4>{this.state.type === "teen" ? "Tel" : "Password"}</h4>
                   <input
                     placeholder={
                       this.state.type === "teen"
-                        ? "9999-99-99 형식으로 입력하세요"
+                        ? "000-000-0000 형식으로 입력해주세요"
                         : null
                     }
                     className="text-input"

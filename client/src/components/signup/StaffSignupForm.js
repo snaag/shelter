@@ -49,8 +49,10 @@ class StaffSignupForm extends Component {
     ).then(resp => {
       return resp.status;
     });
-    if (status === 201) alert("success");
-    else if (status === 401) alert("user already exists");
+    if (status === 201) {
+      alert("가입이 완료 되었습니다!");
+      this.props.history.push("/");
+    } else if (status === 401) alert("user already exists");
     else alert("Please try again!");
   }
 

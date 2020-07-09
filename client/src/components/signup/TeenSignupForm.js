@@ -27,7 +27,7 @@ class TeenSignupForm extends Component {
       alert("missing info!");
       return;
     }
-    await fetch(
+    let status = await fetch(
       "http://ec2-3-128-30-232.us-east-2.compute.amazonaws.com:4000/user/signup",
       {
         method: "POST",
@@ -38,8 +38,14 @@ class TeenSignupForm extends Component {
           ...this.state,
         }),
       }
-    );
-    //TODO :  teen api 만들기;
+    ).then(resp => {
+      return resp.status;
+    });
+    if (status === 201) {
+      alert("가입이 완료 되었습니다!");
+      this.props.history.push("/");
+    } else if (status === 401) alert("user already exists");
+    else alert("Please try again!");
   }
 
   handleInput(e) {
