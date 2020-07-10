@@ -7,16 +7,23 @@ const Login = props => {
   };
 
   return (
-    <div className="login-container">
+    <>
       {props.loginStatus ? (
-        <button onClick={() => clickHandler("signout")}>로그아웃</button>
+        <div className="fab fab-icon-holder">
+          <i
+            className="fas fa-user-circle"
+            onClick={() => clickHandler("signout")}
+          ></i>
+        </div>
       ) : (
-        <>
-          <button onClick={() => clickHandler("signin")}>로그인</button>
-          <button onClick={() => clickHandler("signup")}>회원가입</button>
-        </>
+        <div className="fab fab-icon-holder">
+          <i
+            className="fas fa-user-circle"
+            onClick={() => clickHandler("signin")}
+          ></i>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

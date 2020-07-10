@@ -23,8 +23,6 @@ const ShelterMarker = props => {
     ALL: ["M", "F"],
   };
 
-  console.log("SS", sexTypesSplit[SEX_TYPE]);
-
   const koToEngSex = {
     M: "male",
     F: "female",

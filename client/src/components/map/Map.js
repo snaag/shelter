@@ -4,60 +4,6 @@ import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import ShelterDetail from "../../containers/map/ShelterMarkerContainer";
 import { googleMap } from "../../config/apiKey";
 
-const centerOfLocations = locations => {
-  const length = locations.length;
-  const reducer = (acc, curr) => {
-    acc.lat += curr.lat;
-    acc.lng += curr.lng;
-    return acc;
-  };
-  const sum = locations.reduce(reducer, { lat: 0, lng: 0 });
-  return { lat: sum.lat / length, lng: sum.lng / length };
-};
-
-const getDistance = (location1, location2) => {
-  const lat1 = location1.lat;
-  const lng1 = location1.lng;
-  const lat2 = location2.lat;
-  const lng2 = location2.lng;
-
-  return (lat2 - lat1) * (lat2 - lat1) + (lng2 - lng1) * (lng2 - lng1);
-};
-
-const getZoom = locations => {
-  const distToZoom = {
-    10: 13,
-    20: 12,
-    30: 11,
-    350: 10,
-    over: 9,
-  };
-  const length = locations.length;
-  const latLng = [];
-  const ret = [];
-
-  locations.forEach(location => {
-    latLng.push({
-      lng: Number(location.REFINE_WGS84_LOGT),
-      lat: Number(location.REFINE_WGS84_LAT),
-    });
-  });
-
-  for (let a = 0; a < length; a++) {
-    for (let b = a + 1; b < length; b++) {
-      ret.push(getDistance(latLng[a], latLng[b]));
-    }
-  }
-
-  ret.sort((a, b) => (a > b ? -1 : a < b ? 1 : 0));
-  ret[0] = ret[0] * 1000;
-  if (ret[0] < 10) return distToZoom[10];
-  if (ret[0] < 20) return distToZoom[20];
-  if (ret[0] < 30) return distToZoom[30];
-  if (ret[0] < 350) return distToZoom[350];
-  return distToZoom.over;
-};
-
 const getLocations = shelters => {
   const ret = [];
 
@@ -74,7 +20,6 @@ const getLocations = shelters => {
 const Map = props => {
   const positions = getLocations(props.shelters);
   const shelters = props.shelters;
-  const zoom = getZoom(props.shelters);
   const [curPos, setCurPos] = useState({});
 
   if (Object.keys(curPos).length === 0) {
@@ -97,7 +42,6 @@ const Map = props => {
   const MapWithAMarker = withScriptjs(
     withGoogleMap(props => (
       <GoogleMap
-        // defaultZoom={zoom}
         defaultZoom={16}
         defaultCenter={props.defaultCenter}
         defaultOptions={{

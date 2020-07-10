@@ -2,24 +2,24 @@
 
 .fab-container {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 2rem;
+  right: 2rem;
   z-index: 999;
   cursor: pointer;
 }
 
 .fab-icon-holder {
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 100%;
-  background: #016fb9;
+  background: rgba(1, 111, 185, 0.9);
   margin-left: 0.5rem;
 
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .fab-icon-holder:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .fab-icon-holder i {
@@ -30,10 +30,4 @@
   height: 100%;
   font-size: 1.2rem;
   color: #ffffff;
-}
-
-.fab {
-  width: 60px;
-  height: 60px;
-  background: rgb(182, 45, 45);
 }

@@ -5,7 +5,6 @@ import ShelterMarker from "../../components/map/ShelterMarker";
 import { setCurrentShelter } from "../../actions/index";
 
 const ShelterMarkerContainer = ({
-  // details,
   position,
   shelter,
   currentShelter,
@@ -13,7 +12,6 @@ const ShelterMarkerContainer = ({
 }) => {
   return (
     <ShelterMarker
-      // details={details}
       position={position}
       shelter={shelter}
       currentShelter={currentShelter}

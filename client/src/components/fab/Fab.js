@@ -1,14 +1,7 @@
 import React, { useState } from "react";
+import Login from "../../containers/login/Login";
 
 const Fab = props => {
-  // const { menusStatus } = props;
-  // const {
-  //   menusActive,
-  //   mapButtonActive,
-  //   locationButtonActive,
-  //   listButtonActive,
-  //   commentButtonActive,
-  // } = menusStatus;
   const [menusActive, setMenusActive] = useState(true);
   const [mapButtonActive, setMapButtonActive] = useState(true);
   const [locationButtonActive, setLocationButtonActive] = useState(false);
@@ -20,14 +13,13 @@ const Fab = props => {
       id: 0,
       iconClassName: "fa-compass",
       handle: () => {
-        console.log("location");
+        // console.log("location");
       },
     },
     map: {
       id: 1,
       iconClassName: "fa-map",
       handle: () => {
-        console.log("map");
         let list = document.body.querySelector(".filter-list");
         list.classList.add("fold");
 
@@ -42,14 +34,12 @@ const Fab = props => {
 
         setMapButtonActive(false);
         setListButtonActive(true);
-        // filter-condition--${this.state.fold ? "fold" : "unfold
       },
     },
     list: {
       id: 2,
       iconClassName: "fa-list",
       handle: () => {
-        console.log("list");
         let list = document.body.querySelector(".filter-list");
         list.classList.remove("fold");
 
@@ -70,7 +60,7 @@ const Fab = props => {
       id: 3,
       iconClassName: "fa-comment-alt",
       handle: () => {
-        console.log("comment");
+        // console.log("comment");
       },
     },
   };
@@ -92,6 +82,7 @@ const Fab = props => {
           {locationButtonActive && createButton(menuType.location)}
           {listButtonActive && createButton(menuType.list)}
           {commentButtonActive && createButton(menuType.comment)}
+          <Login />
         </div>
       )}
     </>
