@@ -1,0 +1,20 @@
+/* FilterKeyword */
+.filter-keyword,
+.filter-keyword div {
+  display: inline-block;
+}
+
+.filter-keyword {
+  width: 95%;
+}
+
+.filter-keyword__sex,
+.filter-keyword__period,
+.filter-keyword__cities {
+  margin: 0.1rem;
+  background-color: rgb(90, 90, 90);
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
+}

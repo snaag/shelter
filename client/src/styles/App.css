@@ -1,0 +1,43 @@
+@import "./index.css";
+@import "./Home.css";
+@import "./filter/Filter.css";
+@import "./Map.css";
+@import "./FAB.css";
+@import "./filter/FilterCondition.css";
+@import "./filter/FilterKeyword.css";
+@import "./filter/FilterList.css";
+@import "./Signup.css";
+@import "./Signin.css";
+@import "./Signout.css";
+@import "./Login.css";
+
+* {
+  font-family: "Spoqa Han Sans";
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+}
+
+@media screen and (min-width: 480px) {
+  .fab-container div:not(:last-child) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .filter {
+    max-width: 100%;
+    height: initial;
+  }
+}
+
+.fold {
+  display: none;
+}
