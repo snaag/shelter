@@ -22,11 +22,7 @@
 }
 
 @media screen and (min-width: 480px) {
-  /* .fab-container div:not(:last-child) {
-    display: none;
-  } */
-  .fab-container div:nth-child(0),
-  .fab-container div:nth-child(1) {
+  .fab-container div:not(:last-child) {
     display: none;
   }
 }

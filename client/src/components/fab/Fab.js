@@ -6,7 +6,7 @@ const Fab = props => {
   const [mapButtonActive, setMapButtonActive] = useState(true);
   const [locationButtonActive, setLocationButtonActive] = useState(false);
   const [listButtonActive, setListButtonActive] = useState(false);
-  const [commentButtonActive, setCommentButtonActive] = useState(true);
+  const [commentButtonActive, setCommentButtonActive] = useState(false);
 
   const menuType = {
     location: {

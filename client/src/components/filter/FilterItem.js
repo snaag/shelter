@@ -56,7 +56,7 @@ class FilterItem extends Component {
           </div>
           <div className="filter-list__item__about__call">
             <a href={`tel:${shelter.CONTCT_NO}`}>
-              <img src={icon.phone} alt="" />
+              <img src={icon.phone} alt="call" name="call" />
             </a>
           </div>
         </div>

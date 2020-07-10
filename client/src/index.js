@@ -7,10 +7,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import reducers from "./reducers";
 
-const store = createStore(
-  reducers,
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-);
+const store = createStore(reducers);
 
 ReactDOM.render(
   <Provider store={store}>
