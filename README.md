@@ -12,13 +12,22 @@
 - 팀명 : D2C2
 
 * 박정혁
-  - 각자 맡은 일 간략하게 적어주세요
+  - client 개발 환경 / 프레임 구축
+  - filter, map 연결
+  - filter 기능 구현
 * 이상아
-  - 각자 맡은 일 간략하게 적어주세요
+  - client 개발 환경프레임 구축
+  - map
+  - chat(wip)
 * 함석호
-  - 각자 맡은 일 간략하게 적어주세요
+  - server 개발환경 / 프레임구축
+  - shelter API
+  - chat API (wip)
 * 변민우
-  - 각자 맡은 일 간략하게 적어주세요
+  - server 개발환경 /프레임 구축
+  - user API
+  - dabatabase
+  - server deployment
 
 
 ### 기술 스택
