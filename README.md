@@ -25,7 +25,6 @@
 
 > - [React JS](http://reactjs.org/)
 > - [Redux](https://redux.js.org/)
-> - [Socket.io](https://socket.io/)
 > - [GoogleMaps](https://developers.google.com/maps/documentation?hl=ko)
 > - [Node](https://nodejs.org/en/)
 > - [AWS](https://aws.amazon.com/ko/)
@@ -104,9 +103,5 @@
 - 유형에 맞게 폼 작성 후 ![SS_SUBMIT_BUTTON.png](README-resource/SS_SUBMIT_BUTTON.png)
 
 ![SS_SIGNUP_PAGE.png](README-resource/SS_SIGNUP_PAGE.png)
-
-### 채팅
-
--
 
 **이 외에 프로젝트 과정에서의 기획과정, 회고, 진행 현황등 자세한 사항들은 Wiki에 기록하게 됩니다. [여기](https://github.com/codestates/shelter/wiki)를 눌러 이동해 주세요**
