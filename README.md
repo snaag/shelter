@@ -54,16 +54,20 @@ Shelter
 - chat API 구현 (wip)
 
 
-### 기술 스택
+## 기술 스택
+![image (1)](https://user-images.githubusercontent.com/35102081/87292744-3a987100-c53c-11ea-8068-b3ed33c0e7bf.png)
 
-> - [React JS](http://reactjs.org/)
-> - [Redux](https://redux.js.org/)
-> - [GoogleMaps](https://developers.google.com/maps/documentation?hl=ko)
-> - [Node](https://nodejs.org/en/)
-> - [AWS](https://aws.amazon.com/ko/)
->   - S3
->   - EC2
->   - RDS
+[React JS](http://reactjs.org/)
+
+[Redux](https://redux.js.org/)
+
+[GoogleMaps](https://developers.google.com/maps/documentation?hl=ko)
+
+[Node](https://nodejs.org/en/)
+
+[Express](https://expressjs.com/)
+
+[AWS](https://aws.amazon.com/ko/)
 
 
 ## 사용 방법
