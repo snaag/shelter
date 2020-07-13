@@ -30,39 +30,28 @@ Shelter
 
 
 ## 팀원 소개
-### 박정혁 *Front-end*
-* Github: https://github.com/Dinn
-* Email: ib3smys@gmail.com
-* Blog: [dinn.github.io](dinn.github.io)
-  - client 개발 환경 및 프레임 구축
-  - `Filter` 컴포넌트 기능 구현
-  - `Filter`, `Map` 컴포넌트 연결
-  - 반응형 웹 디자인 설정
+### [박정혁 *Front-end*](https://github.com/Dinn)
+- client 개발 환경 및 프레임 구축
+- `Filter` 컴포넌트 기능 구현
+- `Filter`, `Map` 컴포넌트 연결
+- 반응형 웹 디자인 설정
   
-### 변민우 *Full Stack*
-* Github: https://github.com/bombamong
-* Email: bmwismw@gmail.com 
-* Blog: https://bombamong.tistory.com/
-  - server 개발환경 및 프레임 구축
-  - map API 구현
-  - user API 구현
-  - `sign-up`, `sign-in`, `sing-out` 페이지 구현
-  - dabatabase 개발 환경 및 테이블 구축
+### [변민우 *Full Stack*](https://github.com/bombamong)
+- server 개발환경 및 프레임 구축
+- map API 구현
+- user API 구현
+- `sign-up`, `sign-in`, `sing-out` 페이지 구현
+- dabatabase 개발 환경 및 테이블 구축
 
-### 이상아 *Front-end*
-* Github: https://github.com/snaag
-* Email:  snaag.dev@gmail.com
-* Blog: https://velog.io/@04_miffy
-  - client 개발 환경 및 프레임 구축
-  - `Map` 컴포넌트 기능 구현
-  - `Chat` 컴포넌트 기능 구현 *(wip)*
+### [이상아 *Front-end*](https://github.com/snaag)
+- client 개발 환경 및 프레임 구축
+- `Map` 컴포넌트 기능 구현
+- `Chat` 컴포넌트 기능 구현 *(wip)*
  
-### 함석호 *Back-end*
-* Github: https://github.com/cocoball02
-* Email:  seokho9522@gmail.com
-  - server 개발 환경 및 프레임구축
-  - shelter API 구현
-  - chat API 구현 (wip)
+### [함석호 *Back-end*](https://github.com/cocoball02)
+- server 개발 환경 및 프레임구축
+- shelter API 구현
+- chat API 구현 (wip)
 
 
 ## 기술 스택
