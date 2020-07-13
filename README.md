@@ -111,16 +111,16 @@ Shelter
 ### 모바일 검색
 모바일 환경에서의 검색 기능입니다.
 
-![모바일 검색](https://user-images.githubusercontent.com/35102081/87311749-9d990080-c55a-11ea-8f60-845307e248f4.gif)
+<img src="https://user-images.githubusercontent.com/35102081/87311749-9d990080-c55a-11ea-8f60-845307e248f4.gif" alt="모바일 검색" width="250" />
 
 ### 모바일 상세 정보 확인
 모바일 환경에서 쉼터의 상세 정보를 확인합니다.
 
 하단의 버튼을 통해 목록과 지도를 번갈아 조회할 수 있습니다.
 
-![모바일 상세 정보 확인](https://user-images.githubusercontent.com/35102081/87311757-9f62c400-c55a-11ea-99b0-b787334a57c6.gif)
+<img src="https://user-images.githubusercontent.com/35102081/87311757-9f62c400-c55a-11ea-99b0-b787334a57c6.gif" alt="모바일 상세 정보 확인" width="250" />
 
 ### 모바일 로그인 / 로그아웃
 모바일 환경에서의 로그인, 로그아웃 기능입니다.
 
-![모바일 로그인 로그아웃](https://user-images.githubusercontent.com/35102081/87311765-a12c8780-c55a-11ea-9055-d09990bd1c66.gif)
+<img src="https://user-images.githubusercontent.com/35102081/87311765-a12c8780-c55a-11ea-9055-d09990bd1c66.gif" alt="모바일 로그인 로그아웃" width="250" />
