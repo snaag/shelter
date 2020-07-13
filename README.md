@@ -1,5 +1,18 @@
 
 # Shelter
+![react](https://img.shields.io/badge/react-16.13.1-brightgreen)
+![react-router-dom](https://img.shields.io/badge/react--router--dom-5.2.0-brightgreen)
+![react-redux](https://img.shields.io/badge/react--redux-7.2.0-brightgreen)
+![react-google-maps](https://img.shields.io/badge/react--google--maps-9.4.5-brightgreen)
+![axios](https://img.shields.io/badge/axios-0.19.2-brightgreen)
+![express](https://img.shields.io/badge/express-4.17.1-blue)
+![body-parser](https://img.shields.io/badge/body--parser-1.19.0-blue)
+![cookie-parser](https://img.shields.io/badge/cookie--parser-1.4.5-blue)
+![cors](https://img.shields.io/badge/cors-2.8.5-blue)
+![jsonwebtoken](https://img.shields.io/badge/jsonwebtoken-8.5.1-blue)
+![mysql2](https://img.shields.io/badge/mysql2-2.1.0-blue)
+![sequelize](https://img.shields.io/badge/sequelize-6.2.3-blue)
+
 ## 프로젝트 개요
 ### 프로젝트 명
 Shelter
@@ -15,27 +28,29 @@ Shelter
 
 쉼터들의 위치를 지도에 표시해주고 각 쉼터에 대한 정보를 한 눈에 확인 할 수 있습니다.
 
-## 팀명과 팀원
 
-- 팀명 : D2C2
+## 팀원 소개
+* **박정혁** *Front-end*
+  - client 개발 환경 및 프레임 구축
+  - `Filter` 컴포넌트 기능 구현
+  - `Filter`, `Map` 컴포넌트 연결
+  
+ * **변민우** *Full Stack*
+  - server 개발환경 및 프레임 구축
+  - map API 구현
+  - user API 구현
+  - `sign-up`, `sign-in`, `sing-out` 페이지 구현
+  - dabatabase 개발 환경 및 테이블 구축
 
-* 박정혁
-  - client 개발 환경 / 프레임 구축
-  - filter, map 연결
-  - filter 기능 구현
-* 이상아
-  - client 개발 환경프레임 구축
-  - map
-  - chat(wip)
-* 함석호
-  - server 개발환경 / 프레임구축
-  - shelter API
-  - chat API (wip)
-* 변민우
-  - server 개발환경 /프레임 구축
-  - user API
-  - dabatabase
-  - server deployment
+* **이상아** *Front-end*
+  - client 개발 환경 및 프레임 구축
+  - `Map` 컴포넌트 기능 구현
+  - `Chat` 컴포넌트 기능 구현 *(wip)*
+ 
+* **함석호** *Back-end*
+  - server 개발 환경 및 프레임구축
+  - shelter API 구현
+  - chat API 구현 (wip)
 
 
 ### 기술 스택
