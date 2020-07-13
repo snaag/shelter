@@ -70,75 +70,57 @@ Shelter
 [AWS](https://aws.amazon.com/ko/)
 
 
-## 사용 방법
 
+## 기능
 ### 청소년 쉼터 검색
+선택한 조건에 맞는 쉼터 목록을 조회합니다.
 
-- [쉘터](http://first-project-shelter.s3-website.ap-northeast-2.amazonaws.com/)로 이동
+![검색](https://user-images.githubusercontent.com/35102081/87310759-5c542100-c559-11ea-81ae-9f686a824b1d.gif)
 
-- 좌측에 있는 필터의 값을 선택 후 ![SS_SEARCH_BUTTON.png](README-resource/SS_SEARCH_BUTTON.png)
+### 상세 정보 확인
+원하는 쉼터의 상세 정보와 위치를 조회합니다.
 
-  - 성별
+![상세정보확인](https://user-images.githubusercontent.com/35102081/87310884-873e7500-c559-11ea-97ce-5079b48d765b.gif)
 
-![SS_FILTER_GENDER.png](README-resource/SS_FILTER_GENDER.png)
+### 검색 결과 없음
+선택한 조건에 맞는 쉼터가 없을 땐 빈 목록을 보여줍니다.
 
-- 기간
+![검색결과 없음](https://user-images.githubusercontent.com/35102081/87311124-cd93d400-c559-11ea-8ca8-b90155ad30f4.gif)
 
-![SS_FILTER_DURATION.png](README-resource/SS_FILTER_DURATION.png)
+### 전체 검색
+필터의 어떤 키워드도 선택하지 않고 검색했을 시, 모든 쉼터를 조회합니다.
 
-- 지역
-
-![SS_FILTER_LOCATION.png](README-resource/SS_FILTER_LOCATION.png)
-
-- 검색 후 지도에서 확인 하고싶은 쉼터 클릭
-
-![SS_MAP_SHELTER.png](README-resource/SS_MAP_SHELTER.png)
-
-- 또는 좌측 필터된 쉼터 리스트 중 클릭
-
-![SS_FILTER_LIST.png](README-resource/SS_FILTER_LIST.png)
-
-### 모바일 접속
-
-- 모바일로 접속 하는 경우 하기와 같이 버튼 세개가 보입니다.
-
-![SS_MOBILE_MAP_FILTER.png](README-resource/SS_MOBILE_MAP_FILTER.png)
-
-- 좌측 부터 지도 보기, 채팅 그리고 로그인 버튼 입니다.
-
-![SS_FAB_ICONS.png](README-resource/SS_FAB_ICONS.png)
-
-- 지도 버튼을 클릭하면 필터를 숨기고 지도만 보이게 됩니다.
-
-![SS_MOBILE_MAP_NO_FILTER.png](README-resource/SS_MOBILE_MAP_NO_FILTER.png)
-
-### 로그인
-
-- 우측 하단에 있는 로그인 아이콘 클릭
-
-![SS_LOGIN_ICON.png](README-resource/SS_LOGIN_ICON.png)
-
-- 유저 유형 선택
-  - 청소년: Name, Tel 란 작성 후 ![SS_SUBMIT_BUTTON.png](README-resource/SS_SUBMIT_BUTTON.png)
-
-![SS_SIGNIN_PAGE.png](README-resource/SS_SIGNIN_PAGE.png)
-
-- 로그아웃 시에는 동일하게 우측 하단 버튼을 클릭
-
-![SS_LOGIN_ICON.png](README-resource/SS_LOGIN_ICON.png)
-
-- 그 후 로그아웃 하기 클릭
-
-![SS_SIGNOUT_PAGE.png](README-resource/SS_SIGNOUT_PAGE.png)
+![전체 검색](https://user-images.githubusercontent.com/35102081/87311110-ca98e380-c559-11ea-81ee-9b223119e861.gif)
 
 ### 회원 가입
+우측 하단의 Floating Action Button을 클릭하여 회원 관리 페이저로 이동합니다.
 
-- 회원가입 페이지로 이동 후 회원 유형 선택
+회원은 쉼터 직원(관리자)과 청소년 두 유형으로 분리하여 관리합니다.
+<p>
+<img src="https://user-images.githubusercontent.com/35102081/87311707-8fe37b00-c55a-11ea-888e-e754cec7ab76.gif" alt="관리자 가입" width="48%" />
+<img src="https://user-images.githubusercontent.com/35102081/87311713-9245d500-c55a-11ea-9014-84b07f366d6d.gif" alt="청소년 가입" width="48%" />
+</p>
 
-![SS_SIGNUP_PAGE_SELECTION.png](README-resource/SS_SIGNUP_PAGE_SELECTION.png)
+### 로그인 / 로그아웃
+회원 관리 페이지에서 로그인을 할 수 있으며 로그인 상태일 때 Floating Action Button을 클릭하면 로그아웃이 됩니다.
+<p>
+<img src="https://user-images.githubusercontent.com/35102081/87311721-93770200-c55a-11ea-9aa8-21e413d1d75a.gif" alt="로그인" width="48%" />
+<img src="https://user-images.githubusercontent.com/35102081/87311726-9540c580-c55a-11ea-8c41-3254744566c8.gif" alt="로그아웃" width="48%" />
+</p>
 
-- 유형에 맞게 폼 작성 후 ![SS_SUBMIT_BUTTON.png](README-resource/SS_SUBMIT_BUTTON.png)
+### 모바일 검색
+모바일 환경에서의 검색 기능입니다.
 
-![SS_SIGNUP_PAGE.png](README-resource/SS_SIGNUP_PAGE.png)
+![모바일 검색](https://user-images.githubusercontent.com/35102081/87311749-9d990080-c55a-11ea-8f60-845307e248f4.gif)
 
-**이 외에 프로젝트 과정에서의 기획과정, 회고, 진행 현황등 자세한 사항들은 Wiki에 기록하게 됩니다. [여기](https://github.com/codestates/shelter/wiki)를 눌러 이동해 주세요**
+### 모바일 상세 정보 확인
+모바일 환경에서 쉼터의 상세 정보를 확인합니다.
+
+하단의 버튼을 통해 목록과 지도를 번갈아 조회할 수 있습니다.
+
+![모바일 상세 정보 확인](https://user-images.githubusercontent.com/35102081/87311757-9f62c400-c55a-11ea-99b0-b787334a57c6.gif)
+
+### 모바일 로그인 / 로그아웃
+모바일 환경에서의 로그인, 로그아웃 기능입니다.
+
+![모바일 로그인 로그아웃](https://user-images.githubusercontent.com/35102081/87311765-a12c8780-c55a-11ea-9055-d09990bd1c66.gif)
