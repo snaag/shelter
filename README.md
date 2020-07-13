@@ -30,27 +30,28 @@ Shelter
 
 
 ## 팀원 소개
-* **박정혁** *Front-end*
-  - client 개발 환경 및 프레임 구축
-  - `Filter` 컴포넌트 기능 구현
-  - `Filter`, `Map` 컴포넌트 연결
+### 박정혁 *Front-end*
+- client 개발 환경 및 프레임 구축
+- `Filter` 컴포넌트 기능 구현
+- `Filter`, `Map` 컴포넌트 연결
+- 반응형 웹 디자인 설정
   
- * **변민우** *Full Stack*
-  - server 개발환경 및 프레임 구축
-  - map API 구현
-  - user API 구현
-  - `sign-up`, `sign-in`, `sing-out` 페이지 구현
-  - dabatabase 개발 환경 및 테이블 구축
+### 변민우 *Full Stack*
+- server 개발환경 및 프레임 구축
+- map API 구현
+- user API 구현
+- `sign-up`, `sign-in`, `sing-out` 페이지 구현
+- dabatabase 개발 환경 및 테이블 구축
 
-* **이상아** *Front-end*
-  - client 개발 환경 및 프레임 구축
-  - `Map` 컴포넌트 기능 구현
-  - `Chat` 컴포넌트 기능 구현 *(wip)*
+### 이상아 *Front-end*
+- client 개발 환경 및 프레임 구축
+- `Map` 컴포넌트 기능 구현
+- `Chat` 컴포넌트 기능 구현 *(wip)*
  
-* **함석호** *Back-end*
-  - server 개발 환경 및 프레임구축
-  - shelter API 구현
-  - chat API 구현 (wip)
+### 함석호 *Back-end*
+- server 개발 환경 및 프레임구축
+- shelter API 구현
+- chat API 구현 (wip)
 
 
 ### 기술 스택
