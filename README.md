@@ -51,7 +51,7 @@ Shelter
 ### [함석호 *Back-end*](https://github.com/cocoball02)
 - server 개발 환경 및 프레임구축
 - shelter API 구현
-- chat API 구현 (wip)
+- chat API 구현 *(wip)*
 
 
 ## 기술 스택
