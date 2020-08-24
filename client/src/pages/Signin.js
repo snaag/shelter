@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { changeUserLoginStatus, setLoginType } from "../actions/index";
+import { userActions } from "../reducers/user.reducer";
 import { withRouter } from "react-router";
 
 class Signin extends Component {
@@ -73,7 +73,7 @@ class Signin extends Component {
       body.password = this.state.password;
     }
     let status = await fetch(
-      "http://ec2-3-128-30-232.us-east-2.compute.amazonaws.com:4000/user/signin",
+      "http://ec2-3-129-24-234.us-east-2.compute.amazonaws.com:4000/user/signin",
       {
         method: "POST",
         headers: {
@@ -203,14 +203,14 @@ class Signin extends Component {
 }
 
 const mapStateToProps = state => ({
-  loginStatus: state.loginReducer.loginStatus,
-  loginType: state.loginReducer.loginType,
+  loginStatus: state.user.loginStatus,
+  loginType: state.user.loginType,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeLogin: status => dispatch(changeUserLoginStatus(status)),
-    setLoginType: status => dispatch(setLoginType(status)),
+    changeLogin: status => dispatch(userActions.changeUserLoginStatus(status)),
+    setLoginType: status => dispatch(userActions.setLoginType(status)),
   };
 };
 

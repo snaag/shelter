@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ShelterMarker from "../../components/map/ShelterMarker";
-import { setCurrentShelter } from "../../actions/index";
+import { filterActions } from "../../reducers/filter.reducer";
 
 const ShelterMarkerContainer = ({
   position,
@@ -21,10 +21,15 @@ const ShelterMarkerContainer = ({
 };
 
 const mapStateToProps = state => ({
-  currentShelter: state.filterReducer.currentShelter,
+  currentShelter: state.filter.currentShelter,
 });
 
-const mapDispatchToProps = { setCurrentShelter };
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentShelter: status =>
+      dispatch(filterActions.setCurrentShelter(status)),
+  };
+};
 
 export default connect(
   mapStateToProps,

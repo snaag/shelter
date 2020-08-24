@@ -1,15 +1,15 @@
 import { connect } from "react-redux";
 import FilterItem from "../../components/filter/FilterItem";
-import { setCurrentShelter } from "../../actions/index";
+import { filterActions } from "../../reducers/filter.reducer";
 
 const mapStateToProps = state => ({
-  currentShelter: state.filterReducer.currentShelter,
+  currentShelter: state.filter.currentShelter,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     onItemClick: shelter => {
-      return dispatch(setCurrentShelter(shelter));
+      return dispatch(filterActions.setCurrentShelter(shelter));
     },
   };
 };

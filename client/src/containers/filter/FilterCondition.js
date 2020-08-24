@@ -1,10 +1,7 @@
 import { connect } from "react-redux";
 import axios from "axios";
-import {
-  setFilteredShelters,
-  setFilterConditions,
-  changeButtonsStatus,
-} from "../../actions/index";
+import { filterActions } from "../../reducers/filter.reducer";
+import { fabActions } from "../../reducers/fab.reducer";
 import FilterCondition from "../../components/filter/FilterCondition";
 
 const mapStateToProps = () => ({});
@@ -20,21 +17,22 @@ const mapDispatchToProps = dispatch => {
       }
       axios
         .get(
-          `http://ec2-3-128-30-232.us-east-2.compute.amazonaws.com:4000/shelter${params}`
+          `http://ec2-3-129-24-234.us-east-2.compute.amazonaws.com:4000/shelter${params}`
         )
         .then(({ data }) => {
-          return dispatch(setFilteredShelters(data.shelters));
+          return dispatch(filterActions.setFilteredShelters(data.shelters));
         })
         .catch(err => {
           if (err.response && err.response.status === 404) {
-            return dispatch(setFilteredShelters(["empty"]));
+            return dispatch(filterActions.setFilteredShelters(["empty"]));
           }
         });
     },
     dispatchConditions: conditions => {
-      return dispatch(setFilterConditions(conditions));
+      return dispatch(filterActions.setFilterConditions(conditions));
     },
-    changeButtonsStatus: status => dispatch(changeButtonsStatus(status)),
+    changeButtonsStatus: status =>
+      dispatch(fabActions.changeButtonsStatus(status)),
   };
 };
 

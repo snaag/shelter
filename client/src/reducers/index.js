@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import filterReducer from "./filter";
-import fabReducer from "./fab";
-import loginReducer from "./login";
+import filter from "./filter.reducer";
+import fab from "./fab.reducer";
+import user from "./user.reducer";
 
 export default combineReducers({
-  loginReducer,
-  filterReducer,
-  fabReducer,
+  filter,
+  fab,
+  user,
 });

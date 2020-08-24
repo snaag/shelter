@@ -8,16 +8,13 @@ const FabContainer = menusStatus => {
 };
 
 const mapStateToProps = state => ({
-  menusActive: state.fabReducer.menusActive,
-  mapButtonActive: state.fabReducer.mapButtonActive,
-  locationButtonActive: state.fabReducer.locationButtonActive,
-  listButtonActive: state.fabReducer.listButtonActive,
-  commentButtonActive: state.fabReducer.commentButtonActive
+  menusActive: state.fab.menusActive,
+  mapButtonActive: state.fab.mapButtonActive,
+  locationButtonActive: state.fab.locationButtonActive,
+  listButtonActive: state.fab.listButtonActive,
+  commentButtonActive: state.fab.commentButtonActive,
 });
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FabContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FabContainer);
