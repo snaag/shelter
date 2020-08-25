@@ -23,12 +23,10 @@ module.exports = (sequelize, DataTypes) => {
             .digest("hex");
         },
         beforeFind: (staffs, options) => {
-          for (let condition in staffs.where) {
-            staffs.where[condition] = crypto
-              .createHmac("sha256", secret.shelter)
-              .update(staffs.where[condition])
-              .digest("hex");
-          }
+          staffs.where.password = crypto
+            .createHmac("sha256", secret.shelter)
+            .update(staffs.where.password)
+            .digest("hex");
         },
       },
       sequelize,
