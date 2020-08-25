@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import * as userApi from "../../api/user.api";
 
 class TeenSignupForm extends Component {
   constructor(props) {
@@ -27,20 +28,9 @@ class TeenSignupForm extends Component {
       alert("missing info!");
       return;
     }
-    let status = await fetch(
-      "http://ec2-3-128-30-232.us-east-2.compute.amazonaws.com:4000/user/signup",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...this.state,
-        }),
-      }
-    ).then(resp => {
-      return resp.status;
-    });
+
+    const { status } = await userApi.postUser("signup", this.state);
+
     if (status === 201) {
       alert("가입이 완료 되었습니다!");
       this.props.history.push("/");

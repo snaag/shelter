@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userActions } from "../reducers/user.reducer";
 import { withRouter } from "react-router";
+import * as userApi from "../api/user.api";
 
 class Signout extends Component {
   constructor(props) {
@@ -19,17 +20,7 @@ class Signout extends Component {
 
   async handleSignout() {
     this.setState({ loading: true });
-    let status = await fetch(
-      "http://ec2-3-129-24-234.us-east-2.compute.amazonaws.com:4000/user/signout",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then(resp => {
-      return resp.status;
-    });
+    const { status } = await userApi.postUser("signout");
     this.setState({ loading: false });
     if (this.props.loginType !== "") this.props.setLoginType("");
     if (status === 200) {

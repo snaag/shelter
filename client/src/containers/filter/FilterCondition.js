@@ -1,32 +1,31 @@
 import { connect } from "react-redux";
-import axios from "axios";
 import { filterActions } from "../../reducers/filter.reducer";
 import { fabActions } from "../../reducers/fab.reducer";
 import FilterCondition from "../../components/filter/FilterCondition";
+import * as filterApi from "../../api/filter.api";
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => {
   return {
     getAndDispatchShelters: async conditions => {
-      let params = "?";
+      let params = "";
       for (let field in conditions) {
         for (let value of conditions[field]) {
           params += `${field}=${value}&`;
         }
       }
-      axios
-        .get(
-          `http://ec2-3-129-24-234.us-east-2.compute.amazonaws.com:4000/shelter${params}`
-        )
-        .then(({ data }) => {
-          return dispatch(filterActions.setFilteredShelters(data.shelters));
-        })
-        .catch(err => {
-          if (err.response && err.response.status === 404) {
-            return dispatch(filterActions.setFilteredShelters(["empty"]));
-          }
-        });
+
+      try {
+        const {
+          data: { shelters },
+        } = await filterApi.getShelters(params);
+        return dispatch(filterActions.setFilteredShelters(shelters));
+      } catch (err) {
+        if (err.response && err.response.status === 404) {
+          return dispatch(filterActions.setFilteredShelters(["empty"]));
+        }
+      }
     },
     dispatchConditions: conditions => {
       return dispatch(filterActions.setFilterConditions(conditions));

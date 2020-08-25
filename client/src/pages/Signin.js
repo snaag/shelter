@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userActions } from "../reducers/user.reducer";
 import { withRouter } from "react-router";
+import * as userApi from "../api/user.api";
 
 class Signin extends Component {
   constructor(props) {
@@ -72,18 +73,9 @@ class Signin extends Component {
       body.email = this.state.email;
       body.password = this.state.password;
     }
-    let status = await fetch(
-      "http://ec2-3-129-24-234.us-east-2.compute.amazonaws.com:4000/user/signin",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      }
-    ).then(resp => {
-      return resp.status;
-    });
+
+    const { status } = await userApi.postUser("signin", body);
+
     this.setState({ loading: false });
     if (status === 200) {
       this.props.setLoginType(this.state.type);
