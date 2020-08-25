@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
             .digest("hex");
         },
         beforeFind: (staffs, options) => {
+          if (!staffs.where.password) return;
           staffs.where.password = crypto
             .createHmac("sha256", secret.shelter)
             .update(staffs.where.password)
