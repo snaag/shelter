@@ -1,19 +1,23 @@
 import { createAction, handleActions } from "redux-actions";
-import { setValue } from "./reducerUtils";
+import { setState } from "./reducerUtils";
 
-// Actions
-const SET_FILTER_CONDITIONS = "shelter/filter/SET_FILTER_CONDITIONS";
-const SET_FILTERED_SHELTERS = "shelter/filter/SET_FILTERED_SHELTERS";
-const SET_CURRENT_SHELTER = "shelter/filter/SET_CURRENT_SHELTER";
+// Action Types
+const GET_SHELTERS = "shelter/filter/GET_SHELTERS";
+const SET_STATE = "shelter/filter/SET_STATE";
+const START_REQUEST = "shelter/filter/START_REQUEST";
+const END_REQUEST = "shelter/filter/END_REQUEST";
 
 // Action Creators
 export const filterActions = {
-  setFilterConditions: createAction(SET_FILTER_CONDITIONS),
-  setFilteredShelters: createAction(SET_FILTERED_SHELTERS),
-  setCurrentShelter: createAction(SET_CURRENT_SHELTER),
+  getShelters: createAction(GET_SHELTERS),
+  setState: createAction(SET_STATE),
+  startRequest: createAction(START_REQUEST),
+  endRequest: createAction(END_REQUEST),
 };
 
 const initialState = {
+  fetching: false,
+  error: null,
   currentShelter: {},
   shelters: [],
   conditions: {
@@ -26,9 +30,15 @@ const initialState = {
 // Reducer
 export default handleActions(
   {
-    [SET_FILTER_CONDITIONS]: setValue("conditions"),
-    [SET_FILTERED_SHELTERS]: setValue("shelters"),
-    [SET_CURRENT_SHELTER]: setValue("currentShelter"),
+    [SET_STATE]: setState,
+    [START_REQUEST]: prevState => ({
+      ...prevState,
+      fetching: true,
+    }),
+    [END_REQUEST]: prevState => ({
+      ...prevState,
+      fetching: false,
+    }),
   },
   initialState
 );

@@ -26,8 +26,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCurrentShelter: status =>
-      dispatch(filterActions.setCurrentShelter(status)),
+    setCurrentShelter: currentShelter =>
+      dispatch(filterActions.setState({ currentShelter })),
   };
 };
 

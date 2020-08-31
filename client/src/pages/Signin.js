@@ -201,8 +201,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeLogin: status => dispatch(userActions.changeUserLoginStatus(status)),
-    setLoginType: status => dispatch(userActions.setLoginType(status)),
+    changeLogin: loginStatus => dispatch(userActions.setState({ loginStatus })),
+    setLoginType: loginType => dispatch(userActions.setState({ loginType })),
   };
 };
 

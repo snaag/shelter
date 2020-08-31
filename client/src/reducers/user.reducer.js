@@ -1,14 +1,12 @@
 import { createAction, handleActions } from "redux-actions";
-import { setValue } from "./reducerUtils";
+import { setState } from "./reducerUtils";
 
-// Actions
-const CHANGE_USER_LOGIN_STATUS = "shelter/user/CHANGE_USER_LOGIN_STATUS";
-const SET_LOGIN_TYPE = "shelter/user/CHANGE_LOGIN_TYPE";
+// Action Types
+const SET_STATE = "shelter/user/SET_STATE";
 
 // Action Creators
 export const userActions = {
-  changeUserLoginStatus: createAction(CHANGE_USER_LOGIN_STATUS),
-  setLoginType: createAction(SET_LOGIN_TYPE),
+  setState: createAction(SET_STATE),
 };
 
 const initialState = {
@@ -19,8 +17,7 @@ const initialState = {
 // Reducer
 export default handleActions(
   {
-    [CHANGE_USER_LOGIN_STATUS]: setValue("loginStatus"),
-    [SET_LOGIN_TYPE]: setValue("loginType"),
+    [SET_STATE]: setState,
   },
   initialState
 );

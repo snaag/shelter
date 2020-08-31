@@ -8,8 +8,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onItemClick: shelter => {
-      return dispatch(filterActions.setCurrentShelter(shelter));
+    onItemClick: currentShelter => {
+      return dispatch(filterActions.setState({ currentShelter }));
     },
   };
 };

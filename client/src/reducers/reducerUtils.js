@@ -1,4 +1,4 @@
-export const setValue = state => (prevState, action) => ({
+export const setState = (prevState, action) => ({
   ...prevState,
-  [state]: action.payload,
+  ...action.payload,
 });

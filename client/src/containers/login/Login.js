@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeLogin: status => dispatch(userActions.changeUserLoginStatus(status)),
+    changeLogin: loginStatus => dispatch(userActions.setState({ loginStatus })),
   };
 };
 
