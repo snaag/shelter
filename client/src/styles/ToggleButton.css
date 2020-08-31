@@ -1,0 +1,35 @@
+.toggle-button-container {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 2px;
+  flex-direction: column;
+  width: 60px;
+  height: 30px;
+  border: 0.5px solid lightblue;
+  background-color: lightblue;
+  border-radius: 999px;
+  align-items: flex-start;
+  justify-content: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.toggle-button-container-clicked {
+  background-color: lightgreen;
+  border: 0.5px solid lightgreen;
+}
+
+.toggle-circle-unclicked {
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 999px;
+  transition-duration: 0.4s;
+  transition-property: all;
+}
+
+.toggle-circle-clicked {
+  transform: translate(120%);
+}

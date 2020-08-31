@@ -1,70 +1,22 @@
-.signout {
-  padding: 30% auto;
-  height: 100%;
-  width: 100vw;
-  display: inline-block;
-  text-align: center;
-}
-.signout h1 {
-  margin: 10% auto;
-}
-.signout button {
-  border: none;
-  outline: transparent;
-  background-color: transparent;
-  font-size: 2rem;
-  width: 30%;
-  height: 20%;
-  margin: 5% 10%;
-  text-align: center;
-  transition-duration: 0.5s;
-  transition-property: all;
-}
-.signout button:hover {
-  font-size: 3rem;
-  color: blue;
-  font-weight: bold;
-}
-
-.sign-out-loading-container {
+.signout-container {
+  color: rgb(90, 90, 90);
   width: 100%;
-  height: 10%;
-  text-align: center;
-}
-
-.sign-out-loading-container h1 {
+  height: 100%;
   display: inline-block;
-  margin: 0 auto;
-  font-size: 3rem;
+  text-align: center;
+  background-image: url("../assets/bg/mink-mingle-8cOib7pidak-unsplash.jpg");
+  background-size: cover;
 }
 
-.dot1 {
-  color: black;
-  animation: glow 0.6s infinite;
-}
-.dot2 {
-  color: black;
-  animation: glow 0.6s 0.1s infinite;
-}
-.dot3 {
-  color: black;
-  animation: glow 0.6s 0.2s infinite;
+.signout-container h1 {
+  display: inline-block;
 }
 
-@keyframes glow {
-  0% {
-    color: black;
-  }
-  25% {
-    color: lightgrey;
-  }
-  50% {
-    color: white;
-  }
-  75% {
-    color: lightgrey;
-  }
-  100% {
-    color: black;
-  }
+.signout-container-blur {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  justify-content: center;
+  align-items: center;
 }

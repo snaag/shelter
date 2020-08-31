@@ -1,0 +1,32 @@
+.form-input-container {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  flex: 1;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-input-container label {
+  align-self: flex-start;
+  margin: 2% 0;
+}
+
+.form-input-field {
+  width: 100%;
+  padding: 10px 5px;
+  outline: none;
+  border: 0.7px solid lightblue;
+  transition: all 0.2s ease;
+  border-radius: 5px;
+}
+
+.form-input-field:hover {
+  border: 0.7px solid rgb(30, 190, 153);
+}
+
+.invisible {
+  color: transparent;
+}

@@ -1,0 +1,36 @@
+.loading-container h1 {
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.dot1 {
+  color: rgb(90, 90, 90);
+  animation: glow 0.6s infinite;
+}
+.dot2 {
+  color: rgb(90, 90, 90);
+  animation: glow 0.6s 0.1s infinite;
+}
+.dot3 {
+  color: rgb(90, 90, 90);
+  animation: glow 0.6s 0.2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    color: rgb(90, 90, 90);
+  }
+  25% {
+    color: lightgrey;
+  }
+  50% {
+    color: white;
+  }
+  75% {
+    color: lightgrey;
+  }
+  100% {
+    color: rgb(90, 90, 90);
+  }
+}
