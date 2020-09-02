@@ -8,9 +8,7 @@
   width: 95%;
 }
 
-.filter-keyword__sex,
-.filter-keyword__period,
-.filter-keyword__cities {
+.filter-keyword__type {
   margin: 0.1rem;
   background-color: rgb(90, 90, 90);
   color: white;

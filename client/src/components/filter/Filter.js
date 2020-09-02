@@ -1,16 +1,12 @@
-import React, { Component } from "react";
-import FilterCondition from "../../containers/filter/FilterCondition";
-import FilterList from "../../containers/filter/FilterList";
+import React from "react";
+import FilterCondition from "./FilterCondition";
+import FilterList from "./FilterList";
 
-class Filter extends Component {
-  render() {
-    return (
-      <div className="filter">
-        <FilterCondition />
-        <FilterList />
-      </div>
-    );
-  }
+export default function Filter() {
+  return (
+    <div className="filter">
+      <FilterCondition />
+      <FilterList />
+    </div>
+  );
 }
-
-export default Filter;

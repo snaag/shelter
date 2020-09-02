@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import FilterItem from "../../containers/filter/FilterItem";
+import React from "react";
+import { useSelector } from "react-redux";
+import FilterItem from "./FilterItem";
+import Loading from "../login/Loading";
 
-class FilterList extends Component {
-  render() {
-    let fallback;
-    if (this.props.error?.response.status === 404)
-      fallback = (
-        <div className="filter-list--empty">검색 결과가 없습니다.</div>
-      );
-    else if (this.props.error?.response.status === 500)
-      fallback = <div className="filter-list--empty">오류가 발생했습니다.</div>;
+export default function FilterList() {
+  const { shelters, fetching, error } = useSelector(state => state.filter);
 
-    return (
-      <div className="filter-list">
-        {this.props.error
-          ? fallback
-          : this.props.shelters.map((shelter, i) => (
-              <FilterItem key={i} shelter={shelter} />
-            ))}
-      </div>
-    );
-  }
+  let fallback;
+  if (error?.response.status === 404)
+    fallback = <div className="filter-list--empty">검색 결과가 없습니다.</div>;
+  else if (error?.response.status === 500)
+    fallback = <div className="filter-list--empty">오류가 발생했습니다.</div>;
+
+  return (
+    <div className="filter-list">
+      {fetching ? (
+        <Loading />
+      ) : error ? (
+        fallback
+      ) : (
+        shelters.map((shelter, i) => <FilterItem key={i} shelter={shelter} />)
+      )}
+    </div>
+  );
 }
-
-export default FilterList;

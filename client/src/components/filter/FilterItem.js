@@ -1,72 +1,57 @@
-import React, { Component } from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import FilterItemDetail from "./FilterItemDetail";
+import { filterActions } from "../../reducers/filter.reducer";
 import icon from "../../assets/icon";
 
-class FilterItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentShelter: {},
-    };
-    this.handleItemClick = this.handleItemClick.bind(this);
-  }
+export default function FilterItem({ shelter }) {
+  const dispatch = useDispatch();
+  const currentShelter = useSelector(state => state.filter.currentShelter);
 
-  handleItemClick(event) {
+  const handleItemClick = event => {
     if (event.target.name === "call") return;
+    return onItemClick(shelter === currentShelter ? {} : shelter);
+  };
 
-    if (this.props.shelter === this.props.currentShelter) {
-      this.props.onItemClick({});
-      this.setState({ currentShelter: {} });
-    } else {
-      this.props.onItemClick(this.props.shelter);
-      this.setState({
-        currentShelter: this.props.shelter,
-      });
-    }
-  }
+  const onItemClick = useCallback(
+    currentShelter => dispatch(filterActions.setState({ currentShelter })),
+    [dispatch]
+  );
 
-  render() {
-    let shelter = this.props.shelter;
-    const sexType = shelter.SEX_TYPE;
-    const sexTypesSplit = {
-      M: ["male"],
-      F: ["female"],
-      ALL: ["male", "female"],
-    };
+  const male = { text: "남", className: "male" };
+  const female = { text: "여", className: "female" };
+  const sexTypesSplit = {
+    M: [male],
+    F: [female],
+    ALL: [male, female],
+  };
 
-    const koToEngByprd = {
-      일시: "awhile",
-      단기: "short",
-      중장기: "mid-and-long",
-    };
+  const { RESTARER_NM, BYPERD_TYPE, SEX_TYPE, CONTCT_NO } = shelter;
 
-    return (
-      <div className="filter-list__item" onClick={this.handleItemClick}>
-        <div className="filter-list__item__name">{shelter.RESTARER_NM}</div>
-        <div className="filter-list__item__about">
-          <div className="filter-list__item__about__type">
-            <div
-              className={`filter-list__item__about__type__period--${
-                koToEngByprd[shelter.BYPERD_TYPE]
-              }`}
-            />
-            {sexTypesSplit[sexType].map(sex => (
-              <div className={`filter-list__item__about__type__sex__${sex}`} />
-            ))}
-          </div>
-          <div className="filter-list__item__about__call">
-            <a href={`tel:${shelter.CONTCT_NO}`}>
-              <img src={icon.phone} alt="call" name="call" />
-            </a>
-          </div>
+  return (
+    <div className="filter-list__item" onClick={handleItemClick}>
+      <div className="filter-list__item__name">{RESTARER_NM}</div>
+      <div className="filter-list__item__about">
+        <div className="filter-list__item__about__type">
+          <span className="filter-list__item__about__type__period">
+            {BYPERD_TYPE}
+          </span>
+          {sexTypesSplit[SEX_TYPE].map(sex => (
+            <span
+              className={`filter-list__item__about__type__sex__${sex.className}`}
+            >
+              {sex.text}
+            </span>
+          ))}
         </div>
-
-        {this.props.shelter === this.props.currentShelter && (
-          <FilterItemDetail shelter={this.props.shelter} />
-        )}
+        <span className="filter-list__item__about__call">
+          <a href={`tel:${CONTCT_NO}`}>
+            <img src={icon.phone} alt="call" name="call" />
+          </a>
+        </span>
       </div>
-    );
-  }
-}
 
-export default FilterItem;
+      {shelter === currentShelter && <FilterItemDetail shelter={shelter} />}
+    </div>
+  );
+}

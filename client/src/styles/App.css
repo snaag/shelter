@@ -6,6 +6,7 @@
 @import "./filter/FilterCondition.css";
 @import "./filter/FilterKeyword.css";
 @import "./filter/FilterList.css";
+@import "./filter/FilterCategory.css";
 @import "./Signup.css";
 @import "./Signin.css";
 @import "./Signout.css";

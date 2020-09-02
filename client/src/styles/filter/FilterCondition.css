@@ -12,7 +12,7 @@
   text-align: center;
 }
 
-/* 검색 버튼 */
+/* 접기 버튼 */
 .filter-condition__fold-button {
   background-color: white;
   border-top: 0.01rem solid rgba(90, 90, 90, 0.2);
@@ -25,6 +25,7 @@
   width: 1rem;
 }
 
+/* 검색 버튼 */
 .filter-condition__filter-button {
   border-bottom: solid 0.125rem rgba(90, 90, 90, 0.2);
 }
@@ -46,42 +47,4 @@
 .filter-condition__filter-button > button:hover {
   background-color: rgb(90, 90, 90, 0.8);
   color: white;
-}
-
-/* 키워드 선택 창 */
-.filter-condition__sex,
-.filter-condition__period,
-.filter-condition__city {
-  padding: 0.5rem;
-  border-bottom: solid 0.01rem rgba(90, 90, 90, 0.2);
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.filter-condition__sex__title,
-.filter-condition__sex__type,
-.filter-condition__period__title,
-.filter-condition__period__type,
-.filter-condition__city__title,
-.filter-condition__city__list {
-  margin: 0.5rem;
-}
-
-/* 성별 기간 지역 */
-.filter-condition__sex__type--male,
-.filter-condition__sex__type--female,
-.filter-condition__period__type--daily,
-.filter-condition__period__type--short,
-.filter-condition__period__type--mid-long,
-.filter-condition__city__list__element {
-  display: inline-block;
-  background-color: white;
-  color: rgb(90, 90, 90);
-  border-radius: 0.3rem;
-  border: 0.1rem solid rgb(90, 90, 90);
-  padding: 0.12rem 0.5rem;
-  margin: 0.5rem;
-  font-size: 1rem;
-  font-weight: 400;
-  box-shadow: 0 0 0.3rem 0 rgba(0, 0, 0, 0.2);
 }

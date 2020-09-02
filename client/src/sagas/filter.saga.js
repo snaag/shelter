@@ -1,13 +1,14 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, select, takeLatest } from "redux-saga/effects";
 import * as filterApi from "../api/filter.api";
 import { filterActions } from "../reducers/filter.reducer";
+import { getParams } from "./selectors";
 
-function* getSheltersSaga(action) {
-  const params = action.payload;
+function* getSheltersSaga() {
   yield put(filterActions.setState({ error: null }));
 
   try {
     yield put(filterActions.startRequest());
+    const params = yield select(getParams);
     const {
       data: { shelters },
     } = yield call(filterApi.getShelters, params);

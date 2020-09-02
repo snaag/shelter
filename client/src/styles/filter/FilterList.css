@@ -12,8 +12,15 @@
   display: flex;
   justify-content: space-between;
 }
-.filter-list__item__about__type {
-  display: flex;
+
+/* 로딩 중 */
+.filter-list .loading-container {
+  text-align: center;
+  padding: 10rem 0;
+}
+
+.filter-list .loading-container h1 {
+  font-size: 1.75rem;
 }
 
 /* 검색 결과 없음 */
@@ -25,42 +32,26 @@
 }
 
 /* 검색 결과 목록 */
-.filter-list__item__about__city,
-.filter-list__item__about__type__period--awhile::after,
-.filter-list__item__about__type__period--short::after,
-.filter-list__item__about__type__period--mid-and-long::after,
-.filter-list__item__about__type__sex__male::after,
-.filter-list__item__about__type__sex__female::after {
+.filter-list__item__about__type__period,
+.filter-list__item__about__type__sex__male,
+.filter-list__item__about__type__sex__female {
   border-radius: 0.3rem;
   padding: 0.1rem 0.3rem;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   margin-right: 0.2rem;
   color: white;
 }
 
-.filter-list__item__about__type__period--awhile::after {
+.filter-list__item__about__type__period {
   background-color: rgb(90, 90, 90);
-  content: "일시";
 }
 
-.filter-list__item__about__type__period--short::after {
-  background-color: rgb(90, 90, 90);
-  content: "단기";
-}
-
-.filter-list__item__about__type__period--mid-and-long::after {
-  background-color: rgb(90, 90, 90);
-  content: "중장기";
-}
-
-.filter-list__item__about__type__sex__male::after {
+.filter-list__item__about__type__sex__male {
   background-color: rgb(34, 37, 192, 0.85);
-  content: "남";
 }
 
-.filter-list__item__about__type__sex__female::after {
+.filter-list__item__about__type__sex__female {
   background-color: rgb(182, 45, 45, 0.85);
-  content: "여";
 }
 
 /* 기관명 */
@@ -71,8 +62,8 @@
 
 /* 전화 연결 아이콘 */
 .filter-list__item__about__call a img {
-  width: 2em;
-  height: 2em;
+  width: 2rem;
+  height: 2rem;
   border-radius: 100%;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
 }

@@ -1,164 +1,60 @@
-import React, { Component } from "react";
-import FilterKeyword from "../../containers/filter/FilterKeyword";
-import { cities, cityCodes } from "../../data/city";
+import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+
+import FilterKeyword from "./FilterKeyword";
+import FilterCategory from "./FilterCategory";
+
+import { filterActions } from "../../reducers/filter.reducer";
+import { fabActions } from "../../reducers/fab.reducer";
+
+import { SEX, PERIOD, CITY } from "../../data/filterCategoryLists";
 import icon from "../../assets/icon";
 
-class FilterCondition extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fold: false,
-      conditions: {
-        SEX_TYPE: [],
-        BYPERD_TYPE: [],
-        SIGUN_CD: [],
-      },
-    };
+export default function FilterCondition() {
+  const dispatch = useDispatch();
+  const [fold, setFold] = useState(false);
 
-    this.foldToggle = this.foldToggle.bind(this);
-    this.handleClickSexType = this.handleClickCondition("SEX_TYPE").bind(this);
-    this.handleClickPeriods = this.handleClickCondition("BYPERD_TYPE").bind(
-      this
-    );
-    this.handleClickCities = this.handleClickCondition("SIGUN_CD").bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-  }
+  const foldToggle = () => {
+    setFold(!fold);
+  };
 
-  foldToggle() {
-    this.setState({
-      fold: !this.state.fold,
-    });
-  }
+  const handleButtonClick = () => {
+    setFold(true);
+    getShelters();
+    changeButtonsStatus(true);
+  };
 
-  handleClickCondition(condition) {
-    return event => {
-      let conditions = [...this.state.conditions[condition]];
-      let target = event.target;
+  const getShelters = useCallback(() => dispatch(filterActions.getShelters()), [
+    dispatch,
+  ]);
 
-      let idx = conditions.indexOf(target.title);
-      if (idx > -1) {
-        conditions.splice(idx, 1);
-        target.style = "background-color: ''";
-      } else {
-        conditions.push(target.title);
-        target.style = "background-color: #5a5a5a; color: #ffffff;";
-      }
+  const changeButtonsStatus = useCallback(
+    menusActive => dispatch(fabActions.setState({ menusActive })),
+    [dispatch]
+  );
 
-      let newState = {};
-      newState.conditions = {
-        SEX_TYPE: this.state.conditions.SEX_TYPE,
-        BYPERD_TYPE: this.state.conditions.BYPERD_TYPE,
-        SIGUN_CD: this.state.conditions.SIGUN_CD,
-      };
-      newState.conditions[condition] = conditions;
-      this.setState(newState);
-      this.props.dispatchConditions(newState.conditions);
-    };
-  }
-
-  handleButtonClick() {
-    this.setState({
-      fold: true,
-    });
-    this.props.getAndDispatchShelters(this.state.conditions);
-    this.props.changeButtonsStatus(true);
-  }
-
-  render() {
-    return (
-      <div className="filter-condition">
-        <div className="filter-condition__fold-button">
-          <FilterKeyword />
-          {this.state.fold ? (
-            <img
-              src={icon.doubleUpArrow}
-              alt="up arrow"
-              onClick={this.foldToggle}
-            />
-          ) : (
-            <img
-              src={icon.doubleDownArrow}
-              alt="down arrow"
-              onClick={this.foldToggle}
-            />
-          )}
-        </div>
-        <div
-          className={`filter-condition--${this.state.fold ? "fold" : "unfold"}`}
-        >
-          <div className="filter-condition__sex">
-            <div className="filter-condition__sex__title">
-              <span>성별</span>
-            </div>
-            <div className="filter-condition__sex__type">
-              <div
-                className="filter-condition__sex__type--male"
-                title="M"
-                onClick={this.handleClickSexType}
-              >
-                남
-              </div>
-              <div
-                className="filter-condition__sex__type--female"
-                title="F"
-                onClick={this.handleClickSexType}
-              >
-                여
-              </div>
-            </div>
-          </div>
-          <div className="filter-condition__period">
-            <div className="filter-condition__period__title">
-              <span>기간</span>
-            </div>
-            <div className="filter-condition__period__type">
-              <div
-                className="filter-condition__period__type--daily"
-                title="일시"
-                onClick={this.handleClickPeriods}
-              >
-                일시
-              </div>
-              <div
-                className="filter-condition__period__type--short"
-                title="단기"
-                onClick={this.handleClickPeriods}
-              >
-                단기
-              </div>
-              <div
-                className="filter-condition__period__type--mid-long"
-                title="중장기"
-                onClick={this.handleClickPeriods}
-              >
-                중장기
-              </div>
-            </div>
-          </div>
-          <div className="filter-condition__city">
-            <div className="filter-condition__city__title">
-              <span>지역</span>
-            </div>
-            <div className="filter-condition__city__list">
-              {cities.map((city, i) => (
-                <div
-                  className="filter-condition__city__list__element"
-                  key={cityCodes[i]}
-                  title={cityCodes[i]}
-                  onClick={this.handleClickCities}
-                >
-                  {city}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="filter-condition__filter-button">
-            <button onClick={this.handleButtonClick}>검색</button>
-          </div>
+  return (
+    <div className="filter-condition">
+      <div className="filter-condition__fold-button">
+        <FilterKeyword />
+        {fold ? (
+          <img src={icon.doubleUpArrow} alt="up arrow" onClick={foldToggle} />
+        ) : (
+          <img
+            src={icon.doubleDownArrow}
+            alt="down arrow"
+            onClick={foldToggle}
+          />
+        )}
+      </div>
+      <div className={`filter-condition--${fold ? "fold" : "unfold"}`}>
+        <FilterCategory title="성별" type="SEX_TYPE" list={SEX} />
+        <FilterCategory title="기간" type="BYPERD_TYPE" list={PERIOD} />
+        <FilterCategory title="지역" type="SIGUN_CD" list={CITY} />
+        <div className="filter-condition__filter-button">
+          <button onClick={handleButtonClick}>검색</button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default FilterCondition;
