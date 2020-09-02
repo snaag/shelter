@@ -1,44 +1,35 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import FormInput from "./FormInput";
 import Loading from "./Loading";
-import * as userApi from "../../api/user.api";
+import { userActions } from "../../reducers/user.reducer";
 
-const TeenSigninFormContent = ({ setLoginType, changeLogin, goHome }) => {
+const TeenSigninFormContent = () => {
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
-  const [loading, setLoading] = useState(false);
+  const fetching = useSelector(state => state.user.fetching);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleSubmit = async e => {
-    try {
-      e.preventDefault();
-      let body = {
-        type: "teen",
-        name,
-        tel,
-      };
-      if (Object.values(body).includes("")) {
-        alert("미기입 회원 정보가 있습니다.");
-        return;
-      }
-      setLoading(true);
-      const { status } = await userApi.postUser("signin", body);
-      if (status) setLoading(false);
-      if (status === 200) {
-        setLoginType("teen");
-        changeLogin(true);
-        goHome();
-      } else {
-        alert("Please check your input");
-      }
-    } catch (e) {
-      alert("Sorry cannot process your request now");
-      setLoading(false);
+    e.preventDefault();
+    let body = {
+      type: "teen",
+      name,
+      tel,
+    };
+    if (Object.values(body).includes("")) {
+      alert("미기입 회원 정보가 있습니다.");
+      return;
     }
+
+    dispatch(userActions.signIn({ body, history }));
   };
 
   return (
     <form onSubmit={handleSubmit} className="signin-form-content">
-      {loading ? (
+      {fetching ? (
         <Loading message="로그인 중" />
       ) : (
         <>
