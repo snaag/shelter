@@ -1,37 +1,31 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { InfoWindow, Marker } from "react-google-maps";
 
-const ShelterMarker = props => {
-  const { position, shelter, currentShelter } = props;
+import { filterActions } from "../../reducers/filter.reducer";
+
+export default function ShelterMarker(props) {
+  const currentShelter = useSelector(state => state.filter.currentShelter);
+  const { position, shelter } = props;
   const { RESTARER_NM, SEX_TYPE, BYPERD_TYPE } = shelter;
+  const dispatch = useDispatch();
 
   const showInfoWindow = () => {
-    if (currentShelter === shelter) {
-      props.onInfoWindowClick({});
-    } else {
-      props.onInfoWindowClick(shelter);
-    }
+    const selected = currentShelter === shelter ? {} : shelter;
+    dispatch(filterActions.setState({ currentShelter: selected }));
   };
 
-  const closeInfoWindow = () => {
-    props.onInfoWindowClick({});
-  };
+  const closeInfoWindow = useCallback(
+    () => dispatch(filterActions.setState({ currentShelter: {} })),
+    [dispatch]
+  );
 
+  const male = { text: "남", className: "male" };
+  const female = { text: "여", className: "female" };
   const sexTypesSplit = {
-    M: ["M"],
-    F: ["F"],
-    ALL: ["M", "F"],
-  };
-
-  const koToEngSex = {
-    M: "male",
-    F: "female",
-  };
-
-  const koToEngByprd = {
-    일시: "awhile",
-    단기: "short",
-    중장기: "mid-and-long",
+    M: [male],
+    F: [female],
+    ALL: [male, female],
   };
 
   return (
@@ -42,26 +36,25 @@ const ShelterMarker = props => {
     >
       {shelter === currentShelter && (
         <InfoWindow
-          clasName="shelter-marker__window"
+          className="shelter-marker__window"
           onCloseClick={closeInfoWindow}
         >
           <div className="shelter-marker__window__contents">
-            <div className="shelter-marker__window__contents__shelter-name">
+            <div className="shelter-marker__window__contents__name">
               {RESTARER_NM}
             </div>
             <div className="shelter-marker__window__contents__type">
-              <div className="shelter-marker__window__contents__byperd-type">
-                <div
-                  className={`shelter-marker__window__contents__byperd-type__${koToEngByprd[BYPERD_TYPE]}`}
-                />
-              </div>
-              <div className="shelter-marker__window__contents__sex-type">
+              <span className="shelter-marker__window__contents__type__period">
+                {BYPERD_TYPE}
+              </span>
+              <div className="shelter-marker__window__contents__type__sex">
                 {sexTypesSplit[SEX_TYPE].map((sex, idx) => (
-                  <div
-                    alt={sex}
-                    className={`shelter-marker__window__contents__sex-type__${koToEngSex[sex]}`}
+                  <span
+                    className={`shelter-marker__window__contents__type__sex__${sex.className}`}
                     key={idx}
-                  ></div>
+                  >
+                    {sex.text}
+                  </span>
                 ))}
               </div>
             </div>
@@ -70,6 +63,4 @@ const ShelterMarker = props => {
       )}
     </Marker>
   );
-};
-
-export default ShelterMarker;
+}

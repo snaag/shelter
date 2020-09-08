@@ -9,7 +9,12 @@ export default function FilterCategory({ title, type, list }) {
       </div>
       <div className="filter-category__list">
         {list.map((e, i) => (
-          <FilterCategoryItem title={e.title} name={e.name} type={type} />
+          <FilterCategoryItem
+            title={e.title}
+            name={e.name}
+            type={type}
+            key={i}
+          />
         ))}
       </div>
     </div>

@@ -5,8 +5,9 @@ import { filterActions } from "../../reducers/filter.reducer";
 import icon from "../../assets/icon";
 
 export default function FilterItem({ shelter }) {
-  const dispatch = useDispatch();
   const currentShelter = useSelector(state => state.filter.currentShelter);
+  const { RESTARER_NM, BYPERD_TYPE, SEX_TYPE, CONTCT_NO } = shelter;
+  const dispatch = useDispatch();
 
   const handleItemClick = event => {
     if (event.target.name === "call") return;
@@ -26,8 +27,6 @@ export default function FilterItem({ shelter }) {
     ALL: [male, female],
   };
 
-  const { RESTARER_NM, BYPERD_TYPE, SEX_TYPE, CONTCT_NO } = shelter;
-
   return (
     <div className="filter-list__item" onClick={handleItemClick}>
       <div className="filter-list__item__name">{RESTARER_NM}</div>
@@ -36,9 +35,10 @@ export default function FilterItem({ shelter }) {
           <span className="filter-list__item__about__type__period">
             {BYPERD_TYPE}
           </span>
-          {sexTypesSplit[SEX_TYPE].map(sex => (
+          {sexTypesSplit[SEX_TYPE].map((sex, idx) => (
             <span
               className={`filter-list__item__about__type__sex__${sex.className}`}
+              key={idx}
             >
               {sex.text}
             </span>

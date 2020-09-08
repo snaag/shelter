@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Filter from "../components/filter/Filter";
-import MapContainer from "../containers/map/MapContainer";
+import Map from "../components/map/Map";
 
 import FabContainer from "../components/fab/Fab";
 
@@ -10,7 +10,7 @@ class Home extends Component {
     return (
       <div className="home">
         <Filter />
-        <MapContainer />
+        <Map />
         <FabContainer />
       </div>
     );
