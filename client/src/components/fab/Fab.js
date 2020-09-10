@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Login from "../../containers/login/Login";
 
-const Fab = props => {
-  const [menusActive, setMenusActive] = useState(true);
-  const [mapButtonActive, setMapButtonActive] = useState(true);
-  const [locationButtonActive, setLocationButtonActive] = useState(false);
-  const [listButtonActive, setListButtonActive] = useState(false);
-  const [commentButtonActive, setCommentButtonActive] = useState(false);
+import { fabActions } from "../../reducers/fab.reducer";
+import { mapActions } from "../../reducers/map.reducer";
+import { filterActions } from "../../reducers/filter.reducer";
+
+const Fab = () => {
+  const {
+    isMenuActive,
+    isMapButtonActive,
+    isListButtonActive,
+    isLocationButtonActive,
+    isCommentButtonActive,
+  } = useSelector(state => state.fab);
+  const dispatch = useDispatch();
 
   const menuType = {
-    location: {
-      id: 0,
-      iconClassName: "fa-compass",
-      handle: () => {
-        // console.log("location");
-      },
-    },
     map: {
-      id: 1,
+      id: 0,
       iconClassName: "fa-map",
       handle: () => {
         let list = document.body.querySelector(".filter-list");
@@ -32,12 +33,16 @@ const Fab = props => {
         if (foldedCondition) foldedCondition.classList.add("fold");
         if (unFoldedCondition) unFoldedCondition.classList.add("fold");
 
-        setMapButtonActive(false);
-        setListButtonActive(true);
+        dispatch(
+          fabActions.setState({
+            isMapButtonActive: false,
+            isListButtonActive: true,
+          })
+        );
       },
     },
     list: {
-      id: 2,
+      id: 1,
       iconClassName: "fa-list",
       handle: () => {
         let list = document.body.querySelector(".filter-list");
@@ -52,9 +57,21 @@ const Fab = props => {
         if (foldedCondition) foldedCondition.classList.remove("fold");
         if (unFoldedCondition) unFoldedCondition.classList.remove("fold");
 
-        setListButtonActive(false);
-        setMapButtonActive(true);
+        dispatch(
+          fabActions.setState({
+            isMapButtonActive: true,
+            isListButtonActive: false,
+          })
+        );
       },
+    },
+    location: {
+      id: 2,
+      iconClassName: "fa-compass",
+      handle: useCallback(() => {
+        dispatch(filterActions.setState({ currentShelter: {} }));
+        dispatch(mapActions.setState({ showCurrentPosition: true }));
+      }, [dispatch]),
     },
     comment: {
       id: 3,
@@ -76,15 +93,17 @@ const Fab = props => {
 
   return (
     <>
-      {menusActive && (
-        <div className="fab-container">
-          {mapButtonActive && createButton(menuType.map)}
-          {locationButtonActive && createButton(menuType.location)}
-          {listButtonActive && createButton(menuType.list)}
-          {commentButtonActive && createButton(menuType.comment)}
-          <Login />
-        </div>
-      )}
+      <div className="fab-container">
+        {isMenuActive && (
+          <>
+            {isMapButtonActive && createButton(menuType.map)}
+            {isListButtonActive && createButton(menuType.list)}
+            {isCommentButtonActive && createButton(menuType.comment)}
+          </>
+        )}
+        {isLocationButtonActive && createButton(menuType.location)}
+        <Login />
+      </div>
     </>
   );
 };

@@ -5,7 +5,6 @@ import FilterKeyword from "./FilterKeyword";
 import FilterCategory from "./FilterCategory";
 
 import { filterActions } from "../../reducers/filter.reducer";
-import { fabActions } from "../../reducers/fab.reducer";
 
 import { SEX, PERIOD, CITY } from "../../data/filterCategoryLists";
 import icon from "../../assets/icon";
@@ -21,17 +20,11 @@ export default function FilterCondition() {
   const handleButtonClick = () => {
     setFold(true);
     getShelters();
-    changeButtonsStatus(true);
   };
 
   const getShelters = useCallback(() => dispatch(filterActions.getShelters()), [
     dispatch,
   ]);
-
-  const changeButtonsStatus = useCallback(
-    menusActive => dispatch(fabActions.setState({ menusActive })),
-    [dispatch]
-  );
 
   return (
     <div className="filter-condition">

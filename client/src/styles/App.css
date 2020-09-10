@@ -29,7 +29,7 @@
 }
 
 @media screen and (min-width: 480px) {
-  .fab-container div:not(:last-child) {
+  .fab-container div:first-child {
     display: none;
   }
 }

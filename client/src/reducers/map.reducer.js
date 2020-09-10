@@ -2,22 +2,18 @@ import { createAction, handleActions } from "redux-actions";
 import { setState } from "./reducerUtils";
 
 // Action Types
-const SET_STATE = "shelter/fab/SET_STATE";
+const SET_STATE = "shelter/map/SET_STATE";
 
 // Action Creators
-export const fabActions = {
+export const mapActions = {
   setState: createAction(SET_STATE),
 };
 
+// Reducer
 const initialState = {
-  isMenuActive: false,
-  isMapButtonActive: true,
-  isListButtonActive: false,
-  isLocationButtonActive: true,
-  isCommentButtonActive: false,
+  showCurrentPosition: true,
 };
 
-// Reducer
 export default handleActions(
   {
     [SET_STATE]: setState,

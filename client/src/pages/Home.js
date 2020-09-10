@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Filter from "../components/filter/Filter";
 import Map from "../components/map/Map";
 
-import FabContainer from "../components/fab/Fab";
+import Fab from "../components/fab/Fab";
 
 class Home extends Component {
   render() {
@@ -11,7 +11,7 @@ class Home extends Component {
       <div className="home">
         <Filter />
         <Map />
-        <FabContainer />
+        <Fab />
       </div>
     );
   }

@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+} from "react-google-maps";
 
 import ShelterMarker from "./ShelterMarker";
 import { googleMap } from "../../config/apiKey";
@@ -8,6 +13,7 @@ import { googleMap } from "../../config/apiKey";
 export default function Map() {
   const [curPos, setCurPos] = useState({});
   const shelters = useSelector(state => state.filter.shelters);
+  const { showCurrentPosition } = useSelector(state => state.map);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -35,17 +41,17 @@ export default function Map() {
           disableDefaultUI: true,
         }}
       >
-        {shelters.length &&
-          shelters.map(shelter => (
-            <ShelterMarker
-              position={{
-                lat: Number(shelter.REFINE_WGS84_LAT),
-                lng: Number(shelter.REFINE_WGS84_LOGT),
-              }}
-              shelter={shelter}
-              key={shelter.id}
-            />
-          ))}
+        <Marker className="current-position" position={curPos} />
+        {shelters.map(shelter => (
+          <ShelterMarker
+            position={{
+              lat: Number(shelter.REFINE_WGS84_LAT),
+              lng: Number(shelter.REFINE_WGS84_LOGT),
+            }}
+            shelter={shelter}
+            key={shelter.id}
+          />
+        ))}
       </GoogleMap>
     ))
   );
@@ -58,12 +64,12 @@ export default function Map() {
         containerElement={<div style={{ height: `100%`, width: `100%` }} />}
         mapElement={<div style={{ height: `100%`, width: `100%` }} />}
         defaultCenter={
-          shelters.length
-            ? {
+          shelters.length === 0 || showCurrentPosition
+            ? curPos
+            : {
                 lat: Number(shelters[0].REFINE_WGS84_LAT),
                 lng: Number(shelters[0].REFINE_WGS84_LOGT),
               }
-            : curPos
         }
       />
     </div>
