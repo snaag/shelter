@@ -1,60 +1,55 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import FormInput from "./FormInput";
-import Loading from "./Loading";
-import * as userApi from "../../api/user.api";
+import Loading from "../Loading";
+
+import { userActions } from "../../reducers/user.reducer";
 import { emailcheck } from "../../data/emailcheck";
 
-const StaffSignupFormContent = ({ goToSignin }) => {
+const StaffSignupFormContent = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [tel, setTel] = useState("");
   const [shelterId, setShelterId] = useState("");
-  const [loading, setLoading] = useState(false);
+  const fetching = useSelector(state => state.user.fetching);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = async e => {
-    try {
-      e.preventDefault();
-      let body = {
-        type: "staff",
-        email,
-        name,
-        password,
-        tel,
-        shelterId,
-      };
-      if (rePassword !== password) {
-        alert("패스워드가 일치 하지 않습니다.");
-        return;
-      }
-      if (Object.values(body).includes("")) {
-        alert("미기입 회원 정보가 있습니다.");
-        return;
-      }
-      if (!email.match(emailcheck)) {
-        alert("올바른 이메일 주소를 기입해주세요.");
-        return;
-      }
-      setLoading(true);
+    e.preventDefault();
 
-      const { status } = await userApi.postUser("signup", body);
-      if (status) setLoading(false);
-      if (status === 201) {
-        alert("가입이 완료 되었습니다!");
-        goToSignin();
-      } else if (status === 401) {
-        alert(`${email}은(는) 이미 가입된 계정입니다.`);
-      } else alert("죄송합니다. 나중에 다시 시도해주세요");
-    } catch (e) {
-      alert(e, "죄송합니다. 나중에 다시 시도해주세요");
-      setLoading(false);
+    let body = {
+      type: "staff",
+      email,
+      name,
+      password,
+      tel,
+      shelterId,
+    };
+
+    if (rePassword !== password) {
+      alert("패스워드가 일치 하지 않습니다.");
+      return;
     }
+    if (Object.values(body).includes("")) {
+      alert("미기입 회원 정보가 있습니다.");
+      return;
+    }
+    if (!email.match(emailcheck)) {
+      alert("올바른 이메일 주소를 기입해주세요.");
+      return;
+    }
+
+    dispatch(userActions.signUp({ body, history }));
   };
 
   return (
     <form onSubmit={handleSubmit} className="signup-form-content">
-      {loading ? (
+      {fetching ? (
         <Loading message="회원가입 중" />
       ) : (
         <>

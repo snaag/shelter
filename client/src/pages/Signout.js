@@ -1,30 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
-import { userActions } from "../reducers/user.reducer";
-import { withRouter } from "react-router";
-import SignoutForm from "../components/login/SignoutForm";
+import SignoutForm from "../components/user/SignoutForm";
 
-const Signout = ({ changeLogin }) => {
+const Signout = () => {
   return (
     <div className="signout-container">
       <div className="signout-container-blur">
-        <SignoutForm changeLogin={changeLogin} />
+        <SignoutForm />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  loginStatus: state.user.loginStatus,
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeLogin: loginStatus => dispatch(userActions.setState({ loginStatus })),
-    setLoginType: loginType => dispatch(userActions.setState({ loginType })),
-  };
-};
-
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Signout)
-);
+export default Signout;

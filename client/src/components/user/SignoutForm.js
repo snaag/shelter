@@ -1,8 +1,9 @@
 import React from "react";
 import SignoutFormContent from "./SignoutFormContent";
-import { withRouter } from "react-router";
+import { useHistory } from "react-router-dom";
 
-const SignoutForm = ({ history, changeLogin }) => {
+const SignoutForm = () => {
+  const history = useHistory();
   const goHome = () => {
     history.push("/");
   };
@@ -12,7 +13,7 @@ const SignoutForm = ({ history, changeLogin }) => {
       <div className="signout-form-header">
         <h1>SIGNOUT</h1>
       </div>
-      <SignoutFormContent changeLogin={changeLogin} goHome={goHome} />
+      <SignoutFormContent />
       <div className="signout-form-footer">
         <button onClick={goHome}>홈페이지 돌아가기</button>
       </div>
@@ -20,4 +21,4 @@ const SignoutForm = ({ history, changeLogin }) => {
   );
 };
 
-export default withRouter(SignoutForm);
+export default SignoutForm;

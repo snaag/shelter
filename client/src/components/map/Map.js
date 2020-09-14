@@ -11,25 +11,20 @@ import ShelterMarker from "./ShelterMarker";
 import { googleMap } from "../../config/apiKey";
 
 export default function Map() {
-  const [curPos, setCurPos] = useState({});
+  const [curPos, setCurPos] = useState({
+    lat: 37.288122,
+    lng: 126.979956,
+  });
   const shelters = useSelector(state => state.filter.shelters);
   const { showCurrentPosition } = useSelector(state => state.map);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        setCurPos({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      },
-      () => {
-        setCurPos({
-          lat: 37.288122,
-          lng: 126.979956,
-        });
-      }
-    );
+    navigator.geolocation.getCurrentPosition(position => {
+      setCurPos({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
   }, []);
 
   const MapWithAMarker = withScriptjs(

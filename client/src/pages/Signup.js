@@ -1,5 +1,5 @@
 import React from "react";
-import SignupForm from "../components/login/SignupForm";
+import SignupForm from "../components/user/SignupForm";
 
 const Signup = ({ history }) => {
   return (

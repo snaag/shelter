@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import FormInput from "./FormInput";
-import Loading from "./Loading";
+import Loading from "../Loading";
 import { userActions } from "../../reducers/user.reducer";
 
-const StaffSigninFormContent = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const TeenSigninFormContent = () => {
+  const [name, setName] = useState("");
+  const [tel, setTel] = useState("");
   const fetching = useSelector(state => state.user.fetching);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -15,9 +15,9 @@ const StaffSigninFormContent = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     let body = {
-      type: "staff",
-      email,
-      password,
+      type: "teen",
+      name,
+      tel,
     };
     if (Object.values(body).includes("")) {
       alert("미기입 회원 정보가 있습니다.");
@@ -34,16 +34,17 @@ const StaffSigninFormContent = () => {
       ) : (
         <>
           <FormInput
-            id="이메일"
-            inputType="email"
-            inputValue={email}
-            setInputValue={setEmail}
+            id="이름"
+            inputType="text"
+            inputValue={name}
+            setInputValue={setName}
           />
           <FormInput
-            id="비밀번호"
-            inputType="password"
-            inputValue={password}
-            setInputValue={setPassword}
+            pattern={true}
+            id="전화번호 (000-0000-0000)"
+            inputType="tel"
+            inputValue={tel}
+            setInputValue={setTel}
           />
           <FormInput
             labelVisibility={false}
@@ -57,4 +58,4 @@ const StaffSigninFormContent = () => {
   );
 };
 
-export default StaffSigninFormContent;
+export default TeenSigninFormContent;

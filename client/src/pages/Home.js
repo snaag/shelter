@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Filter from "../components/filter/Filter";
 import Map from "../components/map/Map";
 
-import Fab from "../components/fab/Fab";
+import Fab from "../components/Fab";
 
 class Home extends Component {
   render() {

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import TypeSelectionInput from "./TypeSelectionInput";
 import StaffSignupFormContent from "./StaffSignupFormContent";
 import TeenSignupFormContent from "./TeenSignupFormContent";
-import { withRouter } from "react-router";
+import { useHistory } from "react-router-dom";
 
-const SignupForm = ({ history, setLoginType, changeLogin }) => {
+const SignupForm = () => {
   const [type, setType] = useState("teen");
+  const history = useHistory();
 
   const goToSignin = () => {
     history.push("/signin");
@@ -20,19 +21,7 @@ const SignupForm = ({ history, setLoginType, changeLogin }) => {
         <h1>SIGNUP</h1>
       </div>
       <TypeSelectionInput type={type} setType={setType} />
-      {type === "teen" ? (
-        <TeenSignupFormContent
-          setLoginType={setLoginType}
-          changeLogin={changeLogin}
-          goToSignin={goToSignin}
-        />
-      ) : (
-        <StaffSignupFormContent
-          setLoginType={setLoginType}
-          changeLogin={changeLogin}
-          goToSignin={goToSignin}
-        />
-      )}
+      {type === "teen" ? <TeenSignupFormContent /> : <StaffSignupFormContent />}
 
       <div className="signup-form-footer">
         <h5>이미 계정이 있으신가요?</h5>
@@ -43,4 +32,4 @@ const SignupForm = ({ history, setLoginType, changeLogin }) => {
   );
 };
 
-export default withRouter(SignupForm);
+export default SignupForm;

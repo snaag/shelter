@@ -1,18 +1,18 @@
-.signup-container {
+.signin-container {
   color: rgb(90, 90, 90);
   width: 100%;
   height: 100%;
   display: inline-block;
   text-align: center;
-  background-image: url("../assets/bg/marek-szturc-2s3fI3M1lO0-unsplash.jpg");
+  background-image: url("../../assets/bg/mink-mingle-8cOib7pidak-unsplash.jpg");
   background-size: cover;
 }
 
-.signup-container h1 {
+.signin-container h1 {
   display: inline-block;
 }
 
-.signup-container-blur {
+.signin-container-blur {
   display: flex;
   width: 100%;
   height: 100%;

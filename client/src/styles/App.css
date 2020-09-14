@@ -7,15 +7,15 @@
 @import "./filter/FilterKeyword.css";
 @import "./filter/FilterList.css";
 @import "./filter/FilterCategory.css";
-@import "./Signup.css";
-@import "./Signin.css";
-@import "./Signout.css";
-@import "./SigninForm.css";
-@import "./SignupForm.css";
-@import "./SignoutForm.css";
-@import "./ToggleButton.css";
-@import "./TypeSelectionInput.css";
-@import "./FormInput.css";
+@import "./user/Signup.css";
+@import "./user/Signin.css";
+@import "./user/Signout.css";
+@import "./user/SigninForm.css";
+@import "./user/SignupForm.css";
+@import "./user/SignoutForm.css";
+@import "./user/ToggleButton.css";
+@import "./user/TypeSelectionInput.css";
+@import "./user/FormInput.css";
 @import "./Loading.css";
 
 * {

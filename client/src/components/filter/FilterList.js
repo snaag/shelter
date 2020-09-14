@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import FilterItem from "./FilterItem";
-import Loading from "../login/Loading";
+import Loading from "../Loading";
 
 export default function FilterList() {
   const { shelters, fetching, error } = useSelector(state => state.filter);

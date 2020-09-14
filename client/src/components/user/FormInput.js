@@ -30,7 +30,7 @@ const FormInput = ({
 
   return (
     <div className="form-input-container">
-      <label className={labelVisibility ? "" : "invisible"} for={id}>
+      <label className={labelVisibility ? "" : "invisible"} htmlFor={id}>
         {id}
       </label>
       {inputType === "select" ? (

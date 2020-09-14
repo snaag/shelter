@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Login from "../../containers/login/Login";
+import { useHistory } from "react-router-dom";
 
-import { fabActions } from "../../reducers/fab.reducer";
-import { mapActions } from "../../reducers/map.reducer";
-import { filterActions } from "../../reducers/filter.reducer";
+import { fabActions } from "../reducers/fab.reducer";
+import { mapActions } from "../reducers/map.reducer";
+import { filterActions } from "../reducers/filter.reducer";
 
 const Fab = () => {
   const {
@@ -14,7 +14,9 @@ const Fab = () => {
     isLocationButtonActive,
     isCommentButtonActive,
   } = useSelector(state => state.fab);
+  const { loginStatus } = useSelector(state => state.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const menuType = {
     map: {
@@ -80,13 +82,23 @@ const Fab = () => {
         // console.log("comment");
       },
     },
+    signin: {
+      id: 4,
+      iconClassName: "fa-user-circle",
+      handle: () => history.push("/signin"),
+    },
+    signout: {
+      id: 5,
+      iconClassName: "fa-user-circle",
+      handle: () => history.push("signout"),
+    },
   };
 
   const createButton = type => {
     const { iconClassName } = type;
     return (
-      <div className="fab fab-icon-holder" onClick={type.handle}>
-        <i className={`fas ${iconClassName}`}></i>
+      <div className="fab fab-icon-holder">
+        <i className={`fas ${iconClassName}`} onClick={type.handle}></i>
       </div>
     );
   };
@@ -102,7 +114,9 @@ const Fab = () => {
           </>
         )}
         {isLocationButtonActive && createButton(menuType.location)}
-        <Login />
+        {loginStatus
+          ? createButton(menuType.signout)
+          : createButton(menuType.signin)}
       </div>
     </>
   );
